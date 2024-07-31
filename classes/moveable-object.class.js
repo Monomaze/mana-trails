@@ -1,7 +1,9 @@
 class MovableObject {
     x = 120;
-    y = 400;
+    y = 272;
     img;
+    width;
+    height;
 
     /*
     constructor(x, y, img) {
