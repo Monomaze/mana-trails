@@ -4,12 +4,12 @@ class Player extends MovableObject {
     height = 96 * 1.5;
     y = 480 - this.height - 70; 
     IMAGES_IDLE = [
-        'img/player_character/player_idle1.png',
-        'img/player_character/player_idle2.png',
-        'img/player_character/player_idle3.png',
-        'img/player_character/player_idle4.png',
-        'img/player_character/player_idle5.png',
-        'img/player_character/player_idle6.png'
+        'img/player_character/idle/player_idle1.png',
+        'img/player_character/idle/player_idle2.png',
+        'img/player_character/idle/player_idle3.png',
+        'img/player_character/idle/player_idle4.png',
+        'img/player_character/idle/player_idle5.png',
+        'img/player_character/idle/player_idle6.png'
     ];
     world;
 
