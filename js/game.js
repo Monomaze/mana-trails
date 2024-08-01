@@ -11,37 +11,29 @@ function init() {
 }
 
 window.addEventListener("keydown", (event) => {
-    console.log(event);
     if (event.key === ' ') {
-        Keyboard.SPACE = true;
-        console.log('SPACE IS TRUE: ', Keyboard.SPACE);
+        keyboard.SPACE = true;
     }
 
     if (event.key === 'ArrowRight') {
-        Keyboard.RIGHT = true;
-        console.log('RIGHT IS TRUE: ', Keyboard.RIGHT);
+        keyboard.RIGHT = true;
     }
 
     if (event.key === 'ArrowLeft') {
-        Keyboard.LEFT = true;
-        console.log('LEFT IS TRUE: ', Keyboard.RIGHT);
+        keyboard.LEFT = true;
     }
 });
 
 window.addEventListener("keyup", (event) => {
-    console.log(event);
     if (event.key === ' ') {
-        Keyboard.SPACE = false;
-        console.log('SPACE IS FALSE: ', Keyboard.SPACE);
+        keyboard.SPACE = false;
     }
 
     if (event.key === 'ArrowRight') {
-        Keyboard.RIGHT = false;
-        console.log('RIGHT IS FALSE: ', Keyboard.RIGHT);
+        keyboard.RIGHT = false;
     }
 
     if (event.key === 'ArrowLeft') {
-        Keyboard.LEFT = false;
-        console.log('LEFT IS FALSE: ', Keyboard.RIGHT);
+        keyboard.LEFT = false;
     }
 });
