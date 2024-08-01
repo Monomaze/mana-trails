@@ -44,7 +44,25 @@ class World {
     }
 
     addToMap(moveableObject) {
+        if (moveableObject.otherDirection) {
+            this.flipImage(moveableObject);
+        }
         this.ctx.drawImage(moveableObject.img, moveableObject.x, moveableObject.y, moveableObject.width, moveableObject.height)
+        if (moveableObject.otherDirection) {
+            this.flipImageBack(moveableObject);
+        }
+    }
+
+    flipImage(object) {
+        this.ctx.save();
+        this.ctx.translate(object.width, 0);
+        this.ctx.scale(-1, 1);
+        object.x = object.x * -1;
+    }
+
+    flipImageBack(object) {
+        object.x = object.x * -1;
+        this.ctx.restore();
     }
 
     addObjectsToMap(objects) {
