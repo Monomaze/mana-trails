@@ -11,6 +11,7 @@ class Player extends MovableObject {
         'img/player_character/player_idle5.png',
         'img/player_character/player_idle6.png'
     ];
+    world;
 
     constructor() {
         super().loadImage('../img/player_character/player_idle1.png');
