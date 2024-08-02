@@ -2,7 +2,8 @@ class Level {
     enemies;
     parallaxBackgrounds;
     backgroundObjects;
-    levelEndX = 700;
+    levelEndXLeft = -600;
+    levelEndXRight = 1200;
 
     constructor(enemies, parallaxBackgrounds, backgroundObjects) {
         this.enemies = enemies;

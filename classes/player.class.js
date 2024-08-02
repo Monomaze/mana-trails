@@ -31,12 +31,12 @@ class Player extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndX) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
                 this.x += this.speed;
                 this.otherDirection = false;
             }
 
-            if (this.world.keyboard.LEFT && this.x > -600) {
+            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
