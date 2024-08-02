@@ -6,10 +6,20 @@ class World {
         new Mushroom()
     ];
     backgroundObjects = [
-        new BackgroundObject('img/background/background_layer_1.png'),
-        new BackgroundObject('img/background/background_layer_2.png'),
-        new BackgroundObject('img/background/background_layer_3.png'),
-        new BackgroundObject('img/background/ground.png')
+        new BackgroundObject('img/background/background_layer_1.png', -719),
+        new BackgroundObject('img/background/background_layer_2.png', -719),
+        new BackgroundObject('img/background/background_layer_3.png', -719),
+        new BackgroundObject('img/background/ground.png', -719),
+
+        new BackgroundObject('img/background/background_layer_1.png', 0),
+        new BackgroundObject('img/background/background_layer_2.png', 0),
+        new BackgroundObject('img/background/background_layer_3.png', 0),
+        new BackgroundObject('img/background/ground.png', 0),
+        
+        new BackgroundObject('img/background/background_layer_1.png', 719),
+        new BackgroundObject('img/background/background_layer_2.png', 719),
+        new BackgroundObject('img/background/background_layer_3.png', 719),
+        new BackgroundObject('img/background/ground.png', 719)
     ]
     canvas;
     ctx;
