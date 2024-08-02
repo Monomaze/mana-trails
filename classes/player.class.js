@@ -26,8 +26,6 @@ class Player extends MovableObject {
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
-        // this.loadImages(this.IMAGES_WALK);
-
         this.animate();
     }
 
@@ -42,8 +40,7 @@ class Player extends MovableObject {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
-            this.world.camera_x = -this.x;
-
+            this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
