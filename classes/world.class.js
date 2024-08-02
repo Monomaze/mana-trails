@@ -1,8 +1,6 @@
 class World {
     player = new Player();
-    enemies = level1.enemies;
-    parallaxBackgrounds = level1.parallaxBackground;
-    backgroundObjects = level1.backgroundObjects;
+    level = level1;
     canvas;
     ctx;
     keyboard;
@@ -20,8 +18,8 @@ class World {
     setWorld() {
         this.player.world = this;
 
-        for (let i = 0; i < this.parallaxBackgrounds.length; i++) {
-            this.parallaxBackgrounds[i].world = this;
+        for (let i = 0; i < this.level.parallaxBackgrounds.length; i++) {
+            this.level.parallaxBackgrounds[i].world = this;
         }
     }
 
@@ -29,10 +27,10 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.parallaxBackgrounds);
-        this.addObjectsToMap(this.backgroundObjects);
+        this.addObjectsToMap(this.level.parallaxBackgrounds);
+        this.addObjectsToMap(this.level.backgroundObjects);
         this.addToMap(this.player);
-        this.addObjectsToMap(this.enemies);
+        this.addObjectsToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, 0);
 
