@@ -1,4 +1,4 @@
-class ParallaxBackground extends BackgroundObject {
+class ParallaxBackground extends MovableObject {
     x = 0;
     y = 0;
     width = 720;
