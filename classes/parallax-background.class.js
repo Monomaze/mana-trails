@@ -20,7 +20,7 @@ class ParallaxBackground extends MovableObject {
                 if (this.direction === 'right') {
                     this.x += this.speed;
                 } else if (this.direction === 'left') {
-                    this.x -= this.speed + 0.20;
+                    this.x -= this.speed + 0.10;
                 }
 
                 this.otherDirection = false;
@@ -28,9 +28,9 @@ class ParallaxBackground extends MovableObject {
 
             if (this.world.keyboard.LEFT) {
                 if (this.direction === 'right') {
-                    this.x -= this.speed;
+                    this.x -= this.speed + 0.10;
                 } else if (this.direcition === 'left') {
-                    this.x += this.speed + 0.20;
+                    this.x += this.speed;
                 }
                 this.otherDirection = true;
             }
