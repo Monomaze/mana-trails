@@ -1,30 +1,8 @@
 class World {
     player = new Player();
-    enemies = [
-        new Mushroom(),
-        new Mushroom(),
-        new Mushroom()
-    ];
-
-    parallaxBackground = [
-        new ParallaxBackground('img/background/background_layer_1.png', -719, 'left'),
-        new ParallaxBackground('img/background/background_layer_1.png', 0, 'left'),
-        new ParallaxBackground('img/background/background_layer_1.png', 719, 'left'),
-
-
-        new ParallaxBackground('img/background/background_layer_2.png', -719, 'right'),
-        new ParallaxBackground('img/background/background_layer_2.png', 0, 'right'),
-        new ParallaxBackground('img/background/background_layer_2.png', 719, 'right'),
-
-        new ParallaxBackground('img/background/background_layer_3.png', -719, 'left'),
-        new ParallaxBackground('img/background/background_layer_3.png', 0, 'left'),
-        new ParallaxBackground('img/background/background_layer_3.png', 719, 'left')
-    ]
-    backgroundObjects = [
-        new BackgroundObject('img/background/ground.png', -719),
-        new BackgroundObject('img/background/ground.png', 0),
-        new BackgroundObject('img/background/ground.png', 719)
-    ]
+    enemies = level1.enemies;
+    parallaxBackgrounds = level1.parallaxBackground;
+    backgroundObjects = level1.backgroundObjects;
     canvas;
     ctx;
     keyboard;
@@ -42,8 +20,8 @@ class World {
     setWorld() {
         this.player.world = this;
 
-        for (let i = 0; i < this.parallaxBackground.length; i++) {
-            this.parallaxBackground[i].world = this;
+        for (let i = 0; i < this.parallaxBackgrounds.length; i++) {
+            this.parallaxBackgrounds[i].world = this;
         }
     }
 
@@ -51,7 +29,7 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
 
-        this.addObjectsToMap(this.parallaxBackground);
+        this.addObjectsToMap(this.parallaxBackgrounds);
         this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.player);
         this.addObjectsToMap(this.enemies);

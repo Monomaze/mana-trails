@@ -5,7 +5,6 @@ class ParallaxBackground extends BackgroundObject {
     height = 480;
     speed = 0.10;
     world;
-    isParallax = true;
     direction;
 
     constructor(imagePath, x, direction) {
@@ -20,7 +19,7 @@ class ParallaxBackground extends BackgroundObject {
             if (this.world.keyboard.RIGHT) {
                 if (this.direction === 'right') {
                     this.x += this.speed;
-                } else if (this.direciotn === 'left') {
+                } else if (this.direction === 'left') {
                     this.x -= this.speed + 0.20;
                 }
 
@@ -30,7 +29,7 @@ class ParallaxBackground extends BackgroundObject {
             if (this.world.keyboard.LEFT) {
                 if (this.direction === 'right') {
                     this.x -= this.speed;
-                } else if (this.direciotn === 'left') {
+                } else if (this.direcition === 'left') {
                     this.x += this.speed + 0.20;
                 }
                 this.otherDirection = true;
