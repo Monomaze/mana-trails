@@ -22,7 +22,8 @@ class Player extends MovableObject {
         'img/player_character/walk/player_walk8.png'
     ];
     world;
-    speed = 3;
+    speed = 5;
+    walking_sound = new Audio('audio/footstep_grass.ogg');
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
@@ -31,14 +32,17 @@ class Player extends MovableObject {
 
     animate() {
         setInterval(() => {
+            this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.walking_sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.walking_sound.play();
             }
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
@@ -60,7 +64,6 @@ class Player extends MovableObject {
                 this.currentImage++;
             }
         }, 150);
-
     }
 
     jump() {
