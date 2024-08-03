@@ -1,6 +1,7 @@
 class Mushroom extends MovableObject {
-    width = 32 * 2.2;
-    height = 48 * 2.2;
+    sizeMultiplier = 2.2;
+    width = 32 * this.sizeMultiplier;
+    height = 48 * this.sizeMultiplier;
     y = 480 - this.height - 70; 
     IMAGES_WALK = [
         'img/enemies/mushroom/mushroom_walk1.png',
@@ -26,10 +27,7 @@ class Mushroom extends MovableObject {
     animate() {
         this.moveLeft();
         setInterval(() => {
-            let index = this.currentImage % this.IMAGES_WALK.length;
-            let path = this.IMAGES_WALK[index];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_WALK);
         }, 150)
     }
 }

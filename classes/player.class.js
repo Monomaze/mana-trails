@@ -1,7 +1,7 @@
 class Player extends MovableObject {
-
-    width = 64 * 1.5;
-    height = 96 * 1.5;
+    sizeMultiplier = 1.5;
+    width = 64 * this.sizeMultiplier;
+    height = 96 * this.sizeMultiplier;
     y = 480 - this.height - 70; 
     IMAGES_IDLE = [
         'img/player_character/idle/player_idle1.png',
@@ -50,18 +50,12 @@ class Player extends MovableObject {
         setInterval(() => {
             if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.loadImages(this.IMAGES_WALK);
-                this.width = 80 * 1.5;
-                let index = this.currentImage % this.IMAGES_WALK.length;
-                let path = this.IMAGES_WALK[index];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.width = 80 * this.sizeMultiplier;
+                this.playAnimation(this.IMAGES_WALK);
             } else {
                 this.loadImages(this.IMAGES_IDLE);
-                this.width = 64 * 1.5;
-                let index = this.currentImage % this.IMAGES_IDLE.length;
-                let path = this.IMAGES_IDLE[index];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.width = 64 * this.sizeMultiplier;
+                this.playAnimation(this.IMAGES_IDLE);
             }
         }, 150);
     }
