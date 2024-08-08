@@ -3,7 +3,7 @@ class ParallaxBackground extends MovableObject {
     y = 0;
     width = 720;
     height = 480;
-    speed = 0.10;
+    speed = 0.15;
     world;
     direction;
 
@@ -18,18 +18,18 @@ class ParallaxBackground extends MovableObject {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.world.player.x < this.world.level.levelEndXRight) {
                 if (this.direction === 'right') {
-                    this.x += this.speed;
+                    this.moveRight();
                 } else if (this.direction === 'left') {
-                    this.x -= this.speed + 0.10;
+                    this.moveLeft();
                 }
                 this.otherDirection = false;
             }
 
             if (this.world.keyboard.LEFT && this.world.player.x > this.world.level.levelEndXLeft) {
                 if (this.direction === 'right') {
-                    this.x -= this.speed + 0.10;
+                    this.moveLeft();
                 } else if (this.direcition === 'left') {
-                    this.x += this.speed;
+                    this.moveRight();
                 }
                 this.otherDirection = true;
             }
