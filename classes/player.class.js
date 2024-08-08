@@ -21,12 +21,19 @@ class Player extends MovableObject {
         'img/player_character/walk/player_walk7.png',
         'img/player_character/walk/player_walk8.png'
     ];
+    IMAGES_JUMP = [
+        'img/player_character/jump/player_jump1.png',
+        'img/player_character/jump/player_jump2.png'
+    ]
     world;
     speed = 5;
     walking_sound = new Audio('audio/footstep_grass.ogg');
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
+        this.loadImages(this.IMAGES_WALK);
+        this.loadImages(this.IMAGES_IDLE);
+        this.loadImages(this.IMAGES_JUMP);
         this.applyGravity();
         this.animate();
     }
@@ -49,14 +56,18 @@ class Player extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                this.loadImages(this.IMAGES_WALK);
-                this.width = 80 * this.sizeMultiplier;
-                this.playAnimation(this.IMAGES_WALK);
+
+            if (this.isAboveGround()) {
+                this.width = 72 * this.sizeMultiplier;
+                this.playAnimation(this.IMAGES_JUMP);
             } else {
-                this.loadImages(this.IMAGES_IDLE);
-                this.width = 64 * this.sizeMultiplier;
-                this.playAnimation(this.IMAGES_IDLE);
+                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                    this.width = 80 * this.sizeMultiplier;
+                    this.playAnimation(this.IMAGES_WALK);
+                } else {
+                    this.width = 64 * this.sizeMultiplier;
+                    this.playAnimation(this.IMAGES_IDLE);
+                }
             }
         }, 150);
     }
