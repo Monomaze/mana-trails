@@ -20,6 +20,10 @@ window.addEventListener("keydown", (event) => {
     if (event.key === 'ArrowLeft') {
         keyboard.LEFT = true;
     }
+
+    if (event.key === 'ArrowUp') {
+        keyboard.LEFT = true;
+    }
 });
 
 window.addEventListener("keyup", (event) => {
@@ -32,6 +36,10 @@ window.addEventListener("keyup", (event) => {
     }
 
     if (event.key === 'ArrowLeft') {
+        keyboard.LEFT = false;
+    }
+
+    if (event.key === 'ArrowUp') {
         keyboard.LEFT = false;
     }
 });
