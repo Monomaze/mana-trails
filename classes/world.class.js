@@ -13,6 +13,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
@@ -21,6 +22,16 @@ class World {
         for (let i = 0; i < this.level.parallaxBackgrounds.length; i++) {
             this.level.parallaxBackgrounds[i].world = this;
         }
+    }
+
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.player.isColliding(enemy)) {
+                    console.log('Collision with Character ', enemy);
+                }
+            });
+        }, 200);
     }
 
     draw() {
