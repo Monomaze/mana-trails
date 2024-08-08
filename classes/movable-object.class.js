@@ -32,6 +32,18 @@ class MovableObject {
         this.currentImage++;
     }
 
+    draw(ctx) {
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
+    drawRect(ctx, color) {
+        ctx.beginPath();
+        ctx.lineWidth = "5";
+        ctx.strokeStyle = color;
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
+    }
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {

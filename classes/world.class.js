@@ -45,12 +45,14 @@ class World {
             if (moveableObject.otherDirection) {
                 this.flipImage(moveableObject);
             }
-            this.ctx.drawImage(moveableObject.img, moveableObject.x, moveableObject.y, moveableObject.width, moveableObject.height);
+            moveableObject.draw(this.ctx);
+            moveableObject.drawRect(this.ctx, 'blue');
             if (moveableObject.otherDirection) {
                 this.flipImageBack(moveableObject);
             }
         } else {
-            this.ctx.drawImage(moveableObject.img, moveableObject.x, moveableObject.y, moveableObject.width, moveableObject.height);
+            moveableObject.draw(this.ctx);
+            moveableObject.drawRect(this.ctx, 'red');
         }
     }
 
