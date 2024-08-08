@@ -41,27 +41,27 @@ class Player extends MovableObject {
     animate() {
         setInterval(() => {
             this.walking_sound.pause();
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
-                this.moveRight();
-                this.otherDirection = false;
-                this.walking_sound.play();
-            }
-
-            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
-                this.moveLeft();
-                this.otherDirection = true;
-                this.walking_sound.play();
-            }
 
             if (this.world.keyboard.UP && !this.isAboveGround()) {
                 this.jump();
+            }
+
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
+                this.moveRight();
+                this.otherDirection = false;
+                this.playWalkingSoundIfOnGround();
+            }
+            
+            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
+                this.moveLeft();
+                this.otherDirection = true;
+                this.playWalkingSoundIfOnGround();
             }
 
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
-
             if (this.isAboveGround()) {
                 this.width = 72 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_JUMP);
@@ -75,5 +75,11 @@ class Player extends MovableObject {
                 }
             }
         }, 150);
+    }
+
+    playWalkingSoundIfOnGround() {
+        if (!this.isAboveGround()) {
+            this.walking_sound.play();
+        }
     }
 }
