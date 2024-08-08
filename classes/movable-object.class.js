@@ -49,8 +49,16 @@ class MovableObject {
     }
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60)
+        this.x -= this.speed;
+        this.otherDirection = true;
+    }
+
+    moveRight() {
+        this.x += this.speed;
+        this.otherDirection = false;
+    }
+
+    jump() {
+        return this.speedY = 25;
     }
 }
