@@ -19,9 +19,9 @@ class World {
     setWorld() {
         this.player.world = this;
 
-        for (let i = 0; i < this.level.parallaxBackgrounds.length; i++) {
-            this.level.parallaxBackgrounds[i].world = this;
-        }
+        this.level.parallaxBackgrounds.forEach((background) => {
+            background.world = this;
+        });
     }
 
     checkCollisions() {
