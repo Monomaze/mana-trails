@@ -53,7 +53,7 @@ class Player extends MovableObject {
                 this.walking_sound.play();
             }
 
-            if (this.world.keyboard.UP && this.y === 410 - this.height) {
+            if (this.world.keyboard.UP && !this.isAboveGround()) {
                 this.speedY = 25;
             }
 
