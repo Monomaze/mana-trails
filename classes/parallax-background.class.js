@@ -16,22 +16,24 @@ class ParallaxBackground extends MovableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.RIGHT && this.world.player.x < this.world.level.levelEndXRight) {
-                if (this.direction === 'right') {
-                    this.moveRight();
-                } else if (this.direction === 'left') {
-                    this.moveLeft();
+            if (world !== undefined) {
+                if (this.world.keyboard.RIGHT && this.world.player.x < this.world.level.levelEndXRight) {
+                    if (this.direction === 'right') {
+                        this.moveRight();
+                    } else if (this.direction === 'left') {
+                        this.moveLeft();
+                    }
+                    this.otherDirection = false;
                 }
-                this.otherDirection = false;
-            }
 
-            if (this.world.keyboard.LEFT && this.world.player.x > this.world.level.levelEndXLeft) {
-                if (this.direction === 'right') {
-                    this.moveLeft();
-                } else if (this.direcition === 'left') {
-                    this.moveRight();
+                if (this.world.keyboard.LEFT && this.world.player.x > this.world.level.levelEndXLeft) {
+                    if (this.direction === 'right') {
+                        this.moveLeft();
+                    } else if (this.direcition === 'left') {
+                        this.moveRight();
+                    }
+                    this.otherDirection = true;
                 }
-                this.otherDirection = true;
             }
         }, 1000 / 60);
     }
