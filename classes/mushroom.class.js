@@ -2,7 +2,7 @@ class Mushroom extends MovableObject {
     sizeMultiplier = 2.2;
     width = 32 * this.sizeMultiplier;
     height = 48 * this.sizeMultiplier;
-    y = 480 - this.height - 70; 
+    y = 410 - this.height;
     IMAGES_WALK = [
         'img/enemies/mushroom/mushroom_walk1.png',
         'img/enemies/mushroom/mushroom_walk2.png',

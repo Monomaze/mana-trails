@@ -2,7 +2,7 @@ class Boss extends MovableObject {
     sizeMultiplier = 4;
     width = 64 * this.sizeMultiplier;
     height = 64 * this.sizeMultiplier;
-    y = 480 - this.height - 70; 
+    y = 410 - this.height;
     IMAGES_WALK = [
         'img/enemies/skeleton/skeleton_walk1.png',
         'img/enemies/skeleton/skeleton_walk2.png',

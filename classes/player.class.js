@@ -2,7 +2,7 @@ class Player extends MovableObject {
     sizeMultiplier = 1.5;
     width = 64 * this.sizeMultiplier;
     height = 96 * this.sizeMultiplier;
-    y = 480 - this.height - 70; 
+    y = 410 - this.height;
     IMAGES_IDLE = [
         'img/player_character/idle/player_idle1.png',
         'img/player_character/idle/player_idle2.png',
@@ -27,6 +27,7 @@ class Player extends MovableObject {
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
+        // this.applyGravity();
         this.animate();
     }
 
