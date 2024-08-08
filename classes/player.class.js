@@ -43,11 +43,13 @@ class Player extends MovableObject {
             this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
                 this.moveRight();
+                this.otherDirection = false;
                 this.walking_sound.play();
             }
 
             if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
                 this.moveLeft();
+                this.otherDirection = true;
                 this.walking_sound.play();
             }
 
