@@ -37,11 +37,13 @@ class MovableObject {
     }
 
     drawRect(ctx, color) {
-        ctx.beginPath();
-        ctx.lineWidth = "5";
-        ctx.strokeStyle = color;
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
+        if (this instanceof Player || this instanceof Mushroom || this instanceof Boss) {
+            ctx.beginPath();
+            ctx.lineWidth = "5";
+            ctx.strokeStyle = color;
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
     applyGravity() {
