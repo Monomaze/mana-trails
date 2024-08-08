@@ -27,7 +27,7 @@ class Player extends MovableObject {
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
-        // this.applyGravity();
+        this.applyGravity();
         this.animate();
     }
 
