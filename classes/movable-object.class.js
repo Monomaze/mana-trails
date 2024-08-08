@@ -11,6 +11,7 @@ class MovableObject {
     sizeMultiplier = 1;
     speedY = 0;
     acceleration = 3;
+    health = 100;
 
     loadImage(path) {
         this.img = new Image();

@@ -28,7 +28,8 @@ class World {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.player.isColliding(enemy)) {
-                    console.log('Collision with Character ', enemy);
+                    this.player.health -= 5;
+                    console.log('Collision with Character, Health: ', this.player.health);
                 }
             });
         }, 200);
