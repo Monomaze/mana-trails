@@ -88,4 +88,8 @@ class MovableObject {
             this.health = 0;
         }
     }
+
+    isDead() {
+        return this.health == 0;
+    }
 }

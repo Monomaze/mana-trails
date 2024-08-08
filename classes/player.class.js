@@ -25,6 +25,14 @@ class Player extends MovableObject {
         'img/player_character/jump/player_jump1.png',
         'img/player_character/jump/player_jump2.png'
     ]
+    IMAGES_DEATH = [
+        'img/player_character/death/player_death1.png',
+        'img/player_character/death/player_death2.png',
+        'img/player_character/death/player_death3.png',
+        'img/player_character/death/player_death4.png',
+        'img/player_character/death/player_death5.png',
+        'img/player_character/death/player_death6.png'
+    ]
     world;
     speed = 5;
     walking_sound = new Audio('audio/footstep_grass.ogg');
@@ -34,6 +42,7 @@ class Player extends MovableObject {
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_JUMP);
+        this.loadImages(this.IMAGES_DEATH);
         this.applyGravity();
         this.animate();
     }
@@ -51,7 +60,7 @@ class Player extends MovableObject {
                 this.otherDirection = false;
                 this.playWalkingSoundIfOnGround();
             }
-            
+
             if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
                 this.moveLeft();
                 this.otherDirection = true;
@@ -62,7 +71,10 @@ class Player extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isAboveGround()) {
+            if (this.isDead()) {
+                this.width = 96 * this.sizeMultiplier;
+                this.playAnimation(this.IMAGES_DEATH);
+            } else if (this.isAboveGround()) {
                 this.width = 72 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_JUMP);
             } else {
