@@ -30,7 +30,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if (this.player.isColliding(enemy)) {
                     this.player.hit();
-                    console.log('Collision with Character, Health: ', this.player.health);
+                    this.statusBar.setPercentage(this.player.health);
                 }
             });
         }, 200);
@@ -42,7 +42,13 @@ class World {
 
         this.addObjectsToMap(this.level.parallaxBackgrounds);
         this.addObjectsToMap(this.level.backgroundObjects);
+
+        this.ctx.translate(-this.camera_x, 0);
+        /* ====== Space for fixed objects ====== */
         this.addToMap(this.statusBar);
+        /* ===================================== */
+        this.ctx.translate(this.camera_x, 0);
+
         this.addToMap(this.player);
         this.addObjectsToMap(this.level.enemies);
 
