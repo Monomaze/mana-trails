@@ -20,6 +20,7 @@ canvas {
 }
 
 #logo {
-    max-width: 40%;
-    max-height: 20%;
+    max-width: 30%;
+    max-height: 15%;
+    margin-bottom: 10px;
 }
