@@ -1,42 +1,10 @@
-class MovableObject {
-    x = 0;
-    y = 0;
-    img;
-    width;
-    height;
-    imageCache = [];
-    currentImage = 0;
+class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
-    sizeMultiplier = 1;
     speedY = 0;
     acceleration = 3;
     health = 100;
     lastHit = 0;
-
-    loadImage(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(arr) {
-        arr.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
-
-    playAnimation(images) {
-        let index = this.currentImage % images.length;
-        let path = images[index];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-    }
-
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
 
     drawRect(ctx, color) {
         if (this instanceof Player || this instanceof Mushroom || this instanceof Boss) {
@@ -46,6 +14,13 @@ class MovableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
+    }
+
+    playAnimation(images) {
+        let index = this.currentImage % images.length;
+        let path = images[index];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 
     applyGravity() {
