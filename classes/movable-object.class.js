@@ -12,6 +12,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 3;
     health = 100;
+    lastHit = 0;
 
     loadImage(path) {
         this.img = new Image();
@@ -86,7 +87,15 @@ class MovableObject {
         this.health -= 5;
         if (this.health < 0) {
             this.health = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
+    }
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit;
+        timePassed = timePassed / 1000;
+        return timePassed < 0.2;
     }
 
     isDead() {

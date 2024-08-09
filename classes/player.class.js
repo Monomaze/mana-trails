@@ -3,6 +3,10 @@ class Player extends MovableObject {
     width = 64 * this.sizeMultiplier;
     height = 96 * this.sizeMultiplier;
     y = 410 - this.height;
+    world;
+    speed = 5;
+    walking_sound = new Audio('audio/footstep_grass.ogg');
+
     IMAGES_IDLE = [
         'img/player_character/idle/player_idle1.png',
         'img/player_character/idle/player_idle2.png',
@@ -33,9 +37,12 @@ class Player extends MovableObject {
         'img/player_character/death/player_death5.png',
         'img/player_character/death/player_death6.png'
     ]
-    world;
-    speed = 5;
-    walking_sound = new Audio('audio/footstep_grass.ogg');
+    IMAGES_HURT = [
+        'img/player_character/hurt/player_hurt1.png',
+        'img/player_character/hurt/player_hurt2.png',
+        'img/player_character/hurt/player_hurt3.png',
+        'img/player_character/hurt/player_hurt4.png'
+    ]
 
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
@@ -43,6 +50,7 @@ class Player extends MovableObject {
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_JUMP);
         this.loadImages(this.IMAGES_DEATH);
+        this.loadImages(this.IMAGES_HURT);
         this.applyGravity();
         this.animate();
     }
@@ -74,6 +82,9 @@ class Player extends MovableObject {
             if (this.isDead()) {
                 this.width = 96 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_DEATH);
+            } else if (this.isHurt()) {
+                this.width = 80 * this.sizeMultiplier;
+                this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {
                 this.width = 72 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_JUMP);
