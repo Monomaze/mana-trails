@@ -25,6 +25,16 @@ class DrawableObject {
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
+
+    drawRect(ctx, color) {
+        if (this instanceof Player || this instanceof Mushroom || this instanceof Boss) {
+            ctx.beginPath();
+            ctx.lineWidth = "5";
+            ctx.strokeStyle = color;
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
 }
 
 

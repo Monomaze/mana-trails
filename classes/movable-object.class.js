@@ -6,16 +6,6 @@ class MovableObject extends DrawableObject {
     health = 100;
     lastHit = 0;
 
-    drawRect(ctx, color) {
-        if (this instanceof Player || this instanceof Mushroom || this instanceof Boss) {
-            ctx.beginPath();
-            ctx.lineWidth = "5";
-            ctx.strokeStyle = color;
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
     playAnimation(images) {
         let index = this.currentImage % images.length;
         let path = images[index];
