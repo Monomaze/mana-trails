@@ -4,6 +4,8 @@ class Enemies extends MovableObject {
     height = 100;
     y = 410 - this.height;
     IMAGES_WALK = [];
+    health = 5;
+    world;
 
     constructor() {
         super().loadImages(this.IMAGES_WALK);
@@ -16,7 +18,19 @@ class Enemies extends MovableObject {
         }, 1000 / 60);
         
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALK);
+            if (this.isDead()) {
+
+            } else {
+                this.playAnimation(this.IMAGES_WALK);
+            }
         }, 150)
+    }
+
+    takeDamage() {
+        if (this.health < 0) {
+            this.health = 0;
+        } else {
+            this.health -= 5;
+        }
     }
 }

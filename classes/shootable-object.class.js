@@ -1,5 +1,5 @@
 class ShootableObject extends MovableObject {
-
+    world;
 
     constructor(x, y, playerDirection) {
         super().loadImage('img/player_character/attack/projectile.png');

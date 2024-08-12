@@ -25,6 +25,10 @@ class World {
     setWorld() {
         this.player.world = this;
 
+        this.level.enemies.forEach((enemy) => {
+            enemy.world = this;
+        })
+
         this.level.parallaxBackgrounds.forEach((background) => {
             background.world = this;
         });
@@ -51,6 +55,7 @@ class World {
     }
 
     handleProjectile(projectile) {
+        projectile.world = this;
         this.shootableObjects.push(projectile);
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
@@ -61,7 +66,14 @@ class World {
             if (this.player.isColliding(enemy)) {
                 this.player.hit();
                 this.healthBar.setPercentage(this.player.health);
-            }
+            };
+            
+            this.shootableObjects.forEach((projectile) => {
+                if (enemy.isColliding(projectile)) {
+                    enemy.takeDamage();
+                    console.log(enemy.health);
+                }
+            });
         });
     }
 
