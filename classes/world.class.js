@@ -35,12 +35,16 @@ class World {
     }
 
     checkShootableObjects() {
-        if (this.keyboard.SPACE) {
-            let projectile = new ShootableObject(this.player.x + 100, this.player.y +50);
+        let projectile;
+        if (this.keyboard.SPACE && this.player.otherDirection === false) {
+            projectile = new ShootableObject(this.player.x + 100, this.player.y + 50, this.player.otherDirection);
+            this.shootableObjects.push(projectile);
+        } else if (this.keyboard.SPACE && this.player.otherDirection === true) {
+            projectile = new ShootableObject(this.player.x - 40, this.player.y + 50, this.player.otherDirection);
             this.shootableObjects.push(projectile);
         }
     }
-
+ 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.player.isColliding(enemy)) {
