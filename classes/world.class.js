@@ -7,6 +7,7 @@ class World {
     camera_x = 0;
     healthBar = new HealthBar();
     manaBar = new ManaBar();
+    collectableBar = new CollectableBar();
     shootableObjects = [];
     bgMusic = new Audio('audio/retro_mystic.ogg');
 
@@ -103,6 +104,7 @@ class World {
     addUIElements() {
         this.addToMap(this.healthBar);
         this.addToMap(this.manaBar);
+        this.addToMap(this.collectableBar);
     }
 
     addBackgrounds() {
