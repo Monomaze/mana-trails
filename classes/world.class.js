@@ -41,16 +41,18 @@ class World {
         if (this.player.mana > 0) {
             if (this.keyboard.SPACE && this.player.otherDirection === false) {
                 projectile = new ShootableObject(this.player.x + 100, this.player.y + 50, this.player.otherDirection);
-                this.shootableObjects.push(projectile);
-                this.player.consumeMana();
-                this.manaBar.setPercentage(this.player.mana);
+                this.handleProjectile(projectile);
             } else if (this.keyboard.SPACE && this.player.otherDirection === true) {
                 projectile = new ShootableObject(this.player.x - 40, this.player.y + 50, this.player.otherDirection);
-                this.shootableObjects.push(projectile);
-                this.player.consumeMana();
-                this.manaBar.setPercentage(this.player.mana);
+                this.handleProjectile(projectile);
             }
         }
+    }
+
+    handleProjectile(projectile) {
+        this.shootableObjects.push(projectile);
+        this.player.consumeMana();
+        this.manaBar.setPercentage(this.player.mana);
     }
  
     checkCollisions() {
