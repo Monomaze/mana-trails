@@ -1,5 +1,5 @@
 class ManaBar extends StatusBar {
-    percentage = 20;
+    percentage = 100;
     IMAGES = [
         'img/UI/mana_bar/mana_bar00.png',
         'img/UI/mana_bar/mana_bar10.png',

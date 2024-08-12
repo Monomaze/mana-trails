@@ -4,6 +4,7 @@ class MovableObject extends DrawableObject {
     speedY = 0;
     acceleration = 3;
     health = 100;
+    mana = 100;
     lastHit = 0;
 
     playAnimation(images) {

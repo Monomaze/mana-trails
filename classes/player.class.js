@@ -3,6 +3,7 @@ class Player extends MovableObject {
     width = 64 * this.sizeMultiplier;
     height = 96 * this.sizeMultiplier;
     y = 410 - this.height;
+    mana = 100;
     world;
     speed = 5;
     walking_sound = new Audio('audio/footstep_grass.ogg');
@@ -104,5 +105,12 @@ class Player extends MovableObject {
         if (!this.isAboveGround()) {
             this.walking_sound.play();
         }
+    }
+
+    consumeMana() {
+        this.mana -= 10;
+        if (this.mana < 0) {
+            this.mana = 0;
+        } 
     }
 }
