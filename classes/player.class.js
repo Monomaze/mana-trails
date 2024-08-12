@@ -81,8 +81,10 @@ class Player extends MovableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                this.width = 96 * this.sizeMultiplier;
-                this.playAnimation(this.IMAGES_DEATH);
+                if (this.currentImage % this.IMAGES_DEATH.length !== 0) {
+                    this.width = 96 * this.sizeMultiplier;
+                    this.playAnimation(this.IMAGES_DEATH);
+                }
             } else if (this.isHurt()) {
                 this.width = 80 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_HURT);
