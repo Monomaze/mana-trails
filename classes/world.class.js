@@ -65,8 +65,10 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.player.isColliding(enemy)) {
-                this.player.hit();
-                this.healthBar.setPercentage(this.player.health);
+                if (!enemy.isDead()) {
+                    this.player.hit();
+                    this.healthBar.setPercentage(this.player.health);
+                }
             };
             
             this.shootableObjects.forEach((projectile) => {
