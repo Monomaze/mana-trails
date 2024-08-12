@@ -8,6 +8,7 @@ class World {
     healthBar = new HealthBar();
     manaBar = new ManaBar();
     shootableObjects = [];
+    bgMusic = new Audio('audio/retro_mystic.ogg');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -17,6 +18,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.bgMusic.play();
     }
 
     setWorld() {
