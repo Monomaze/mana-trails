@@ -32,7 +32,7 @@ class Enemies extends MovableObject {
     takeDamage() {
         if (this.health < 0) {
             this.health = 0;
-        } else {
+        } else if (this.health > 0) {
             this.health -= 5;
         }
     }
