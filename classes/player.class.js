@@ -64,13 +64,13 @@ class Player extends MovableObject {
                 this.jump();
             }
 
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight && !this.isDead()) {
                 this.moveRight();
                 this.otherDirection = false;
                 this.playWalkingSoundIfOnGround();
             }
 
-            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
+            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft && !this.isDead()) {
                 this.moveLeft();
                 this.otherDirection = true;
                 this.playWalkingSoundIfOnGround();
