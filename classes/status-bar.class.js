@@ -1,27 +1,11 @@
 class StatusBar extends DrawableObject {
-    percentage = 100;
-    IMAGES = [
-        'img/UI/heatlh_bar/health_bar00.png',
-        'img/UI/heatlh_bar/health_bar10.png',
-        'img/UI/heatlh_bar/health_bar20.png',
-        'img/UI/heatlh_bar/health_bar30.png',
-        'img/UI/heatlh_bar/health_bar40.png',
-        'img/UI/heatlh_bar/health_bar50.png',
-        'img/UI/heatlh_bar/health_bar60.png',
-        'img/UI/heatlh_bar/health_bar70.png',
-        'img/UI/heatlh_bar/health_bar80.png',
-        'img/UI/heatlh_bar/health_bar90.png',
-        'img/UI/heatlh_bar/health_bar100.png'
-    ]
+    percentage = 0;
+    IMAGES = [];
+    width = 200;
+    height = 30;
 
     constructor() {
-        super();
-        this.loadImages(this.IMAGES);
-        this.x = 30;
-        this.y = 20;
-        this.width = 200;
-        this.height = 30;
-        this.setPercentage(100);
+        super().loadImages(this.IMAGES);
     }
 
     setPercentage(percentage) {

@@ -5,7 +5,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    statusBar = new StatusBar();
+    healthBar = new HealthBar();
     shootableObjects = [];
 
     constructor(canvas, keyboard) {
@@ -44,7 +44,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.player.isColliding(enemy)) {
                 this.player.hit();
-                this.statusBar.setPercentage(this.player.health);
+                this.healthBar.setPercentage(this.player.health);
             }
         });
     }
@@ -58,7 +58,7 @@ class World {
 
         this.ctx.translate(-this.camera_x, 0);
         /* ====== Space for fixed objects ====== */
-        this.addToMap(this.statusBar);
+        this.addToMap(this.healthBar);
         /* ===================================== */
         this.ctx.translate(this.camera_x, 0);
 
