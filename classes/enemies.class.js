@@ -15,7 +15,9 @@ class Enemies extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.moveLeft();
+            if (!this.isDead()) {
+                this.moveLeft();
+            }
         }, 1000 / 60);
         
         setInterval(() => {
