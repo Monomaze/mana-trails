@@ -67,27 +67,34 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
-
-        this.addObjectsToMap(this.level.parallaxBackgrounds);
-        this.addObjectsToMap(this.level.backgroundObjects);
-
+        this.addBackgrounds();
         this.ctx.translate(-this.camera_x, 0);
         /* ====== Space for fixed objects ====== */
-        this.addToMap(this.healthBar);
-        this.addToMap(this.manaBar);
+        this.addUIElements();
         /* ===================================== */
         this.ctx.translate(this.camera_x, 0);
-
-        this.addToMap(this.player);
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.shootableObjects);
-
+        this.addMovableObjects();
         this.ctx.translate(-this.camera_x, 0);
-
         self = this;
         requestAnimationFrame(function() {
             self.draw();
         });
+    }
+    
+    addMovableObjects() {
+        this.addToMap(this.player);
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.shootableObjects);
+    }
+
+    addUIElements() {
+        this.addToMap(this.healthBar);
+        this.addToMap(this.manaBar);
+    }
+
+    addBackgrounds() {
+        this.addObjectsToMap(this.level.parallaxBackgrounds);
+        this.addObjectsToMap(this.level.backgroundObjects);
     }
 
     addToMap(moveableObject) {
