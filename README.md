@@ -1,3 +1,6 @@
+AUDIO CREDITS
+Kenney All-in-1 Pack
+
 ART CREDITS
 Player character and enemies by LuizMelo / https://luizmelo.itch.io
 Environment by brullov / https://brullov.itch.io/
