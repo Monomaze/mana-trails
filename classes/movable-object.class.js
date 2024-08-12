@@ -14,6 +14,10 @@ class MovableObject extends DrawableObject {
         this.currentImage++;
     }
 
+    lastImageOfAnimation(array) {
+        return this.currentImage % array.length !== 0;
+    }
+
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
