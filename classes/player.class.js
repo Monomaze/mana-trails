@@ -60,7 +60,7 @@ class Player extends MovableObject {
         setInterval(() => {
             this.walking_sound.pause();
 
-            if (this.world.keyboard.UP && !this.isAboveGround()) {
+            if (this.world.keyboard.UP && !this.isAboveGround() && !this.isDead()) {
                 this.jump();
             }
 
