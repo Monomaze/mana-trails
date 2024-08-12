@@ -19,6 +19,7 @@ class World {
         this.setWorld();
         this.run();
         this.bgMusic.play();
+        this.bgMusic.loop = true;
     }
 
     setWorld() {
