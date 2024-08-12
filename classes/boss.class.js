@@ -1,4 +1,4 @@
-class Boss extends MovableObject {
+class Boss extends Enemies {
     sizeMultiplier = 4;
     width = 64 * this.sizeMultiplier;
     height = 64 * this.sizeMultiplier;

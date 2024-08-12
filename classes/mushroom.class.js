@@ -1,4 +1,4 @@
-class Mushroom extends MovableObject {
+class Mushroom extends Enemies {
     sizeMultiplier = 2.2;
     width = 32 * this.sizeMultiplier;
     height = 48 * this.sizeMultiplier;
@@ -22,15 +22,5 @@ class Mushroom extends MovableObject {
         this.speed = 0.15 + Math.random() * 0.6;
 
         this.animate();
-    }
-
-    animate() {
-        setInterval(() => {
-            this.moveLeft();
-        }, 1000 / 60);
-        
-        setInterval(() => {
-            this.playAnimation(this.IMAGES_WALK);
-        }, 150)
     }
 }
