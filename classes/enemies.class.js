@@ -4,6 +4,7 @@ class Enemies extends MovableObject {
     height = 100;
     y = 410 - this.height;
     IMAGES_WALK = [];
+    IMAGES_DEATH = [];
     health = 5;
     world;
 
@@ -19,7 +20,7 @@ class Enemies extends MovableObject {
         
         setInterval(() => {
             if (this.isDead()) {
-
+                this.playAnimation(this.IMAGES_DEATH);
             } else {
                 this.playAnimation(this.IMAGES_WALK);
             }

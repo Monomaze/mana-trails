@@ -13,10 +13,17 @@ class Mushroom extends Enemies {
         'img/enemies/mushroom/mushroom_walk7.png',
         'img/enemies/mushroom/mushroom_walk8.png'
     ];
+    IMAGES_DEATH = [
+        'img/enemies/mushroom/mushroom_death01.png',
+        'img/enemies/mushroom/mushroom_death02.png',
+        'img/enemies/mushroom/mushroom_death03.png',
+        'img/enemies/mushroom/mushroom_death04.png'
+    ];
 
     constructor() {
         super().loadImage('../img/enemies/mushroom/mushroom_idle.png');
         this.loadImages(this.IMAGES_WALK);
+        this.loadImages(this.IMAGES_DEATH);
 
         this.x = 500 + Math.random() * 200;
         this.speed = 0.15 + Math.random() * 0.6;
