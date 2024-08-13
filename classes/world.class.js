@@ -52,7 +52,6 @@ class World {
                 projectile = new ShootableObject(this.player.x - 40, this.player.y + 50, this.player.otherDirection);
                 this.handleProjectile(projectile);
             }
-
         }
     }
 
@@ -74,7 +73,9 @@ class World {
 
     killObjectFromArray(array, entry) {
         let index = array.indexOf(entry);
-        array.splice(index, 1);
+        if (index >= 0) {
+            array.splice(index, 1);
+        }
     }
  
     checkCollisions() {
