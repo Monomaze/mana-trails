@@ -39,7 +39,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkShootableObjects()
-        }, 200);
+        }, 100);
     }
 
     checkShootableObjects() {
@@ -61,6 +61,11 @@ class World {
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
     }
+
+    killObjectFromArray(array, entry) {
+        let index = array.indexOf(entry);
+        array.splice(index, 1);
+    }
  
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
@@ -72,8 +77,9 @@ class World {
             };
             
             this.shootableObjects.forEach((projectile) => {
-                if (enemy.isColliding(projectile)) {
+                if (enemy.isColliding(projectile) && !enemy.isDead()) {
                     enemy.takeDamage();
+                    this.killObjectFromArray(this.shootableObjects, projectile);
                 }
             });
         });
@@ -97,8 +103,8 @@ class World {
     }
     
     addMovableObjects() {
-        this.addToMap(this.player);
         this.addObjectsToMap(this.level.enemies);
+        this.addToMap(this.player);
         this.addObjectsToMap(this.shootableObjects);
     }
 
