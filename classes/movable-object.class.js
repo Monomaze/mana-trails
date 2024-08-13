@@ -12,6 +12,9 @@ class MovableObject extends DrawableObject {
         let path = images[index];
         this.img = this.imageCache[path];
         this.currentImage++;
+        if (this.currentImage > images.length) {
+            this.currentImage = 0;
+        }
     }
 
     lastImageOfAnimation(array) {

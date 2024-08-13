@@ -23,6 +23,9 @@ class Enemies extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEATH);
+                if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
+                    this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
+                }
             } else {
                 this.playAnimation(this.IMAGES_WALK);
             }
