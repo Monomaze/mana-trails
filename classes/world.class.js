@@ -52,6 +52,7 @@ class World {
                 projectile = new ShootableObject(this.player.x - 40, this.player.y + 50, this.player.otherDirection);
                 this.handleProjectile(projectile);
             }
+
         }
     }
 
@@ -60,7 +61,16 @@ class World {
         this.shootableObjects.push(projectile);
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
+        this.checkProjectileRange(projectile);
     }
+
+    checkProjectileRange(projectile) {
+        setInterval(() => {
+            if (projectile.x == projectile.range) {
+                this.killObjectFromArray(this.shootableObjects, projectile);
+            }
+        }, 100);
+    } 
 
     killObjectFromArray(array, entry) {
         let index = array.indexOf(entry);

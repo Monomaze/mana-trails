@@ -1,5 +1,6 @@
 class ShootableObject extends MovableObject {
     world;
+    range = 0;
 
     constructor(x, y, playerDirection) {
         super().loadImage('img/player_character/attack/projectile.png');
@@ -8,6 +9,7 @@ class ShootableObject extends MovableObject {
         this.width = 35;
         this.height = 35;
         this.otherDirection = playerDirection;
+        this.range = this.x + 300;
         this.shoot();
     }
 
