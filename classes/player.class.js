@@ -60,17 +60,17 @@ class Player extends MovableObject {
         setInterval(() => {
             this.walking_sound.pause();
 
-            if (this.world.keyboard.UP && !this.isAboveGround() && !this.isDead()) {
+            if (this.world.keyboard.UP && !this.isAboveGround()) {
                 this.jump();
             }
 
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight && !this.isDead()) {
+            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
                 this.moveRight();
                 this.otherDirection = false;
                 this.playWalkingSoundIfOnGround();
             }
 
-            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft && !this.isDead()) {
+            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
                 this.moveLeft();
                 this.otherDirection = true;
                 this.playWalkingSoundIfOnGround();
@@ -84,6 +84,7 @@ class Player extends MovableObject {
                 if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
                     this.width = 96 * this.sizeMultiplier;
                     this.playAnimation(this.IMAGES_DEATH);
+                    this.world.keyboard = false;
                 }
             } else if (this.isHurt()) {
                 this.width = 80 * this.sizeMultiplier;
