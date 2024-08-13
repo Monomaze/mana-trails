@@ -74,7 +74,6 @@ class World {
             this.shootableObjects.forEach((projectile) => {
                 if (enemy.isColliding(projectile)) {
                     enemy.takeDamage();
-                    console.log(enemy.health);
                 }
             });
         });
