@@ -7,6 +7,20 @@ class DrawableObject {
     imageCache = [];
     currentImage = 0;
     sizeMultiplier = 1;
+    
+    playAnimation(images) {
+        let index = this.currentImage % images.length;
+        let path = images[index];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+        if (this.currentImage > images.length) {
+            this.currentImage = 0;
+        }
+    }
+
+    lastImageOfAnimation(array) {
+        return this.currentImage % array.length !== 0;
+    }
 
 
     loadImage(path) {

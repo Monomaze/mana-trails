@@ -7,20 +7,6 @@ class MovableObject extends DrawableObject {
     mana = 100;
     lastHit = 0;
 
-    playAnimation(images) {
-        let index = this.currentImage % images.length;
-        let path = images[index];
-        this.img = this.imageCache[path];
-        this.currentImage++;
-        if (this.currentImage > images.length) {
-            this.currentImage = 0;
-        }
-    }
-
-    lastImageOfAnimation(array) {
-        return this.currentImage % array.length !== 0;
-    }
-
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
