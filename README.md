@@ -1,9 +1,8 @@
-##CREDITS <br>
-<br>
-###AUDIO <br>
+<h2>CREDITS</h2>
+<h3>AUDIO</h3>
 Kenney All-in-1 Pack / https://kenney.itch.io <br>
 <br>
-###ART <br>
+<h3>ART</h3>
 Player character by LuizMelo / https://luizmelo.itch.io <br>
 <br>
 Enemies: <br>
