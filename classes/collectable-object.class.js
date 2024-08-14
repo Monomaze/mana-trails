@@ -6,13 +6,11 @@ class CollectableObject extends DrawableObject {
         super();
         this.height = 16 * this.sizeMultiplier;
         this.width = 16 * this.sizeMultiplier;
-        this.x = 300;
-        this.y = 410 - this.height;
     }
 
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_SPIN);
-        }, 1000 / 15);
+        }, 1000 / 10);
     }
 }
