@@ -32,6 +32,9 @@ const level1 = new Level(
         new BackgroundObject('img/background/ground.png', 719 * 3)
     ],
     [
-        new ManaPot()
+        new ManaPot(),
+        new Scroll(150),
+        new Scroll(250),
+        new Scroll(350)
     ]
 );

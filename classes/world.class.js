@@ -113,9 +113,10 @@ class World {
                     this.player.gainMana();
                     this.manaBar.setPercentage(this.player.mana);
                     this.killObjectFromArray(this.level.items, item);
-                } /* else if ( item instanceof Scroll) {
-                    // do something
-                } */
+                } else if (item instanceof Scroll) {
+                    this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
+                    this.killObjectFromArray(this.level.items, item);
+                }
            } 
         });
     }

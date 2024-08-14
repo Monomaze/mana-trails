@@ -1,5 +1,5 @@
 class CollectableBar extends StatusBar {
-    percentage = 10;
+    percentage = 0;
     width = 48 * 2;
     heigth = 16 * 2;
     IMAGES = [
