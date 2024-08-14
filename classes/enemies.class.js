@@ -9,8 +9,7 @@ class Enemies extends MovableObject {
     world;
 
     constructor() {
-        super().loadImages(this.IMAGES_WALK);
-        this.animate();
+        super().animate();
     }
 
     animate() {
