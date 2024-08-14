@@ -39,6 +39,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkShootableObjects()
+            this.checkCollectableCollision();
         }, 100);
     }
 
@@ -96,6 +97,20 @@ class World {
         });
     }
 
+    checkCollectableCollision() {
+        this.level.items.forEach(item => {
+           if(this.player.isColliding(item)) {
+                if (item instanceof ManaPot && this.player.mana < 100) {
+                    this.player.gainMana();
+                    this.manaBar.setPercentage(this.player.mana);
+                    this.killObjectFromArray(this.level.items, item);
+                } /* else if ( item instanceof Scroll) {
+                    // do something
+                } */
+           } 
+        });
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -106,6 +121,7 @@ class World {
         /* ===================================== */
         this.ctx.translate(this.camera_x, 0);
         this.addMovableObjects();
+        this.addObjectsToMap(this.level.items);
         this.ctx.translate(-this.camera_x, 0);
         self = this;
         requestAnimationFrame(function() {
