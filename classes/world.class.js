@@ -10,6 +10,7 @@ class World {
     collectableBar = new CollectableBar();
     shootableObjects = [];
     bgMusic = new Audio('audio/retro_mystic.ogg');
+    shootingCooldown = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -46,10 +47,10 @@ class World {
     checkShootableObjects() {
         let projectile;
         if (this.player.mana > 0) {
-            if (this.keyboard.SPACE && this.player.otherDirection === false) {
+            if (this.keyboard.SPACE && this.player.otherDirection === false && this.shootingCooldown == false) {
                 projectile = new ShootableObject(this.player.x + 100, this.player.y + 50, this.player.otherDirection);
                 this.handleProjectile(projectile);
-            } else if (this.keyboard.SPACE && this.player.otherDirection === true) {
+            } else if (this.keyboard.SPACE && this.player.otherDirection === true && this.shootingCooldown == false) {
                 projectile = new ShootableObject(this.player.x - 40, this.player.y + 50, this.player.otherDirection);
                 this.handleProjectile(projectile);
             }
@@ -62,6 +63,14 @@ class World {
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
         this.checkProjectileRange(projectile);
+        this.shootingCooldown = true;
+        this.setShootingCooldown();
+    }
+
+    setShootingCooldown() {
+        setTimeout(() => {
+            this.shootingCooldown = false;
+        }, 500);
     }
 
     checkProjectileRange(projectile) {
