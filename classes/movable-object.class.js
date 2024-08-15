@@ -42,8 +42,8 @@ class MovableObject extends DrawableObject {
                 this.y <= (obj.y + obj.height);
     }
 
-    hit() {
-        this.health -= 5;
+    hit(damage) {
+        this.health -= damage;
         if (this.health < 0) {
             this.health = 0;
         } else {
