@@ -7,6 +7,7 @@ class Enemies extends MovableObject {
     IMAGES_DEATH = [];
     health = 10;
     world;
+    damage = 10;
 
     constructor() {
         super().animate();

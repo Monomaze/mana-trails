@@ -101,11 +101,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.player.isColliding(enemy)) {
                 if (!enemy.isDead() && this.invulnerabilityCooldown == false) {
-                    if (enemy instanceof Boss) {
-                        this.player.hit(20);
-                    } else {
-                        this.player.hit(10);
-                    }
+                    this.player.hit(enemy.damage);
                     this.invulnerabilityCooldown = true;
                     this.setInvulnerabilityCooldown();
                     this.healthBar.setPercentage(this.player.health);

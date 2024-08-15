@@ -40,6 +40,7 @@ class Boss extends Enemies {
         'img/enemies/boss/boss_death12.png',
         'img/enemies/boss/boss_death13.png'
     ];
+    damage = 20;
 
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
