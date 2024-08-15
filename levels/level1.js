@@ -2,8 +2,7 @@ const level1 = new Level(
     [
         new Mushroom(),
         new Mushroom(),
-        new Mushroom(),
-        new Boss()
+        new Mushroom()
     ],
     [
         new ParallaxBackground('img/background/background_layer_1.png', -719, 'left'),
