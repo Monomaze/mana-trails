@@ -11,6 +11,8 @@ class World {
     shootableObjects = [];
     bgMusic = new Audio('audio/retro_mystic.ogg');
     shootingCooldown = false;
+    bossHealthBar;
+    bossSpawned = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -100,6 +102,9 @@ class World {
             this.shootableObjects.forEach((projectile) => {
                 if (enemy.isColliding(projectile) && !enemy.isDead()) {
                     enemy.takeDamage();
+                    if (enemy instanceof Boss) {
+                        this.bossHealthBar.setPercentage(enemy.health);
+                    }
                     this.killObjectFromArray(this.shootableObjects, projectile);
                 }
             });
@@ -116,9 +121,18 @@ class World {
                 } else if (item instanceof Scroll) {
                     this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
                     this.killObjectFromArray(this.level.items, item);
+                    if (this.collectableBar.percentage == 30 && this.bossSpawned == false) {
+                        this.spawnBoss();
+                    }
                 }
            } 
         });
+    }
+
+    spawnBoss() {
+        this.bossSpawned = true;
+        this.level.enemies.push(new Boss());
+        this.bossHealthBar = new BossHealthBar();
     }
 
     draw() {
@@ -149,6 +163,9 @@ class World {
         this.addToMap(this.healthBar);
         this.addToMap(this.manaBar);
         this.addToMap(this.collectableBar);
+        if (this.bossHealthBar instanceof BossHealthBar) {
+            this.addToMap(this.bossHealthBar);
+        }
     }
 
     addBackgrounds() {
