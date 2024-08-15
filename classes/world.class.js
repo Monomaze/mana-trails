@@ -11,6 +11,7 @@ class World {
     shootableObjects = [];
     bgMusic = new Audio('audio/retro_mystic.ogg');
     shootingCooldown = false;
+    invulnerabilityCooldown = false;
     bossHealthBar;
     bossSpawned = false;
 
@@ -75,6 +76,12 @@ class World {
         }, 500);
     }
 
+    setInvulnerabilityCooldown() {
+        setTimeout(() => {
+            this.invulnerabilityCooldown = false;
+        }, 100);
+    }
+
     checkProjectileRange(projectile) {
         setInterval(() => {
             if (projectile.x == projectile.range) {
@@ -93,8 +100,14 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.player.isColliding(enemy)) {
-                if (!enemy.isDead()) {
-                    this.player.hit();
+                if (!enemy.isDead() && this.invulnerabilityCooldown == false) {
+                    if (enemy instanceof Boss) {
+                        this.player.hit(20);
+                    } else {
+                        this.player.hit(10);
+                    }
+                    this.invulnerabilityCooldown = true;
+                    this.setInvulnerabilityCooldown();
                     this.healthBar.setPercentage(this.player.health);
                 }
             };
