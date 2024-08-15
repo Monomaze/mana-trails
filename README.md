@@ -13,7 +13,7 @@ Items by aamatniekss / https://aamatniekss.itch.io/ <br>
 Environment by brullov / https://brullov.itch.io/ <br>
 <br>
 UI Elements <br>
-- Boss health bar by Bruno Farias / https://bruno-farias.itch.io <br>
+- Skull icon from boss health bar by Bruno Farias / https://bruno-farias.itch.io <br>
 - Health bar, mana bar by Gowl / https://gowldev.itch.io <br>
 - Icons for the collectable bar by aamatniekss / https://aamatniekss.itch.io/ <br>
 <br>
