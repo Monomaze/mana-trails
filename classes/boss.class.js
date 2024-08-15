@@ -3,6 +3,7 @@ class Boss extends Enemies {
     width = 64 * this.sizeMultiplier;
     height = 64 * this.sizeMultiplier;
     y = 410 - this.height;
+    health = 100;
     IMAGES_WALK = [
         'img/enemies/skeleton/skeleton_walk1.png',
         'img/enemies/skeleton/skeleton_walk2.png',
@@ -13,7 +14,7 @@ class Boss extends Enemies {
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
-        this.x = 2200;
+        this.x = 500;
         this.animate();
     }
 

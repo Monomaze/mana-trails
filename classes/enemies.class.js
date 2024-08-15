@@ -5,7 +5,7 @@ class Enemies extends MovableObject {
     y = 410 - this.height;
     IMAGES_WALK = [];
     IMAGES_DEATH = [];
-    health = 5;
+    health = 10;
     world;
 
     constructor() {
@@ -35,7 +35,7 @@ class Enemies extends MovableObject {
         if (this.health < 0) {
             this.health = 0;
         } else if (this.health > 0) {
-            this.health -= 5;
+            this.health -= 10;
         }
     }
 }
