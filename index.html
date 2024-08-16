@@ -40,17 +40,22 @@
     <section id="game-section">
         <div id="start-menu">
             <div class="col-main" id="controls">
-                <button>TEST</button>
+                <div class="col">
+                    <img class="key-img" src="img/UI/keys/arrow_keys.png" alt="">
+                    <span>Move left / jump / move right</span>
+                </div>
+                <div class="col">
+                    <img class="key-img" src="img/UI/keys/space_key.png" alt="">
+                    <span>Shoot</span>
+                </div>
             </div>
             <div class="col-main" id="menu">
                 <div class="col" id="game-img-container">
                     <img id="game-img" src="img/background/background.png" alt="">
                     <div class="overlay"></div>
                 </div>
-                <div class="col" id="game-info">
-                    <span id="goal">Survive and defeat the final boss</span>
-                    <span>Collect all scrolls to summon a strong foe!</span>
-                </div>
+                    <div>Collect all <img src="img/items/scroll/scroll01.png" alt=""> to summon a strong foe!</div>
+                    <div id="goal">Defeat the final boss to win.</div>
                 <button id="play-button" onclick="startGame()">PLAY</button>
             </div>
         </div>

@@ -108,8 +108,15 @@ button {
 }
 
 #goal {
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 10px;
     padding: 8px;
-    margin-bottom: 8px;
+    margin-top: 8px;
+
+}
+
+.key-img {
+    width: 200px;
+    image-rendering: pixelated;
+    padding: 16px;
 }
