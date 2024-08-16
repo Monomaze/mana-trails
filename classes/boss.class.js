@@ -46,6 +46,7 @@ class Boss extends Enemies {
         super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_DEATH);
+        this.loadImages(this.IMAGES_ATTACK);        
         this.x = 500;
         this.animate();
     }
@@ -63,6 +64,8 @@ class Boss extends Enemies {
                 if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
                     this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
                 }
+            } else if (this.playerIsNearby()) {
+                this.playAnimation(this.IMAGES_ATTACK);
             } else {
                 this.playAnimation(this.IMAGES_WALK);
             }
@@ -74,9 +77,14 @@ class Boss extends Enemies {
         if (this.world.player.x < this.x) {
             this.otherDirection = false;
             this.moveLeft();
-        } else if (this.world.player.x > this.x) {
+        } else if (this.world.player.x > this.x) { 
             this.otherDirection = true;
             this.moveRight();
         }
+    }
+
+    playerIsNearby() {
+
+        return (this.world.player.x - this.x > 0 && this.world.player.x - this.x < 150) || (this.world.player.x - this.x < 0 && this.world.player.x - this.x > -150);
     }
 }
