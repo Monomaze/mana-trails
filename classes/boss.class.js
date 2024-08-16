@@ -6,10 +6,11 @@ class Boss extends Enemies {
     x = 500;
     health = 100;
     speed = 1;
-    offsetTop = this.height * 0.5;
-    offsetLeft = this.width * 0.4;
-    offsetRight = this.width * 0.4;
+    offsetTop = this.height * 0.15;
+    offsetLeft = this.width * 0.1;
+    offsetRight = this.width * 0.1;
     offsetBottom = 0;
+    collisionDamage = 20;
     IMAGES_WALK = [
         'img/enemies/boss/boss_walk01.png',
         'img/enemies/boss/boss_walk02.png',
@@ -46,7 +47,6 @@ class Boss extends Enemies {
         'img/enemies/boss/boss_death13.png'
     ];
 
-
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
@@ -70,6 +70,7 @@ class Boss extends Enemies {
                 }
             } else if (this.playerIsNearby()) {
                 this.playAnimation(this.IMAGES_ATTACK);
+                this.collisionDamage = 20;
             } else {
                 this.playAnimation(this.IMAGES_WALK);
             }
@@ -89,5 +90,9 @@ class Boss extends Enemies {
 
     playerIsNearby() {
         return (this.world.player.x - this.x > 0 && this.world.player.x - this.x < 150) || (this.world.player.x - this.x < 0 && this.world.player.x - this.x > -150);
+    }
+
+    attack() {
+        this.collisionDamage = 30;
     }
 }

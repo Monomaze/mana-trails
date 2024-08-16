@@ -4,8 +4,8 @@ class Mushroom extends Enemies {
     height = 48 * this.sizeMultiplier;
     y = 410 - this.height;
     offsetTop = this.height * 0.35;
-    offsetLeft = this.width * 0.35;
-    offsetRight = this.width * 0.35;
+    offsetLeft = this.width * 0.2;
+    offsetRight = this.width * 0.2;
     offsetBottom = 0;
     IMAGES_WALK = [
         'img/enemies/mushroom/mushroom_walk1.png',
