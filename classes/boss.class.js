@@ -40,7 +40,7 @@ class Boss extends Enemies {
         'img/enemies/boss/boss_death12.png',
         'img/enemies/boss/boss_death13.png'
     ];
-    damage = 20;
+
 
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
@@ -84,7 +84,6 @@ class Boss extends Enemies {
     }
 
     playerIsNearby() {
-
         return (this.world.player.x - this.x > 0 && this.world.player.x - this.x < 150) || (this.world.player.x - this.x < 0 && this.world.player.x - this.x > -150);
     }
 }
