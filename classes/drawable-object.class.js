@@ -7,6 +7,10 @@ class DrawableObject {
     imageCache = [];
     currentImage = 0;
     sizeMultiplier = 1;
+    offsetTop = 0;
+    offsetLeft = 0;
+    offsetRight = 0;
+    offsetBottom = 0;
     
     playAnimation(images) {
         let index = this.currentImage % images.length;
