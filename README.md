@@ -16,6 +16,7 @@ UI Elements <br>
 - Skull icon from boss health bar by Bruno Farias / https://bruno-farias.itch.io <br>
 - Health bar, mana bar by Gowl / https://gowldev.itch.io <br>
 - Icons for the collectable bar by aamatniekss / https://aamatniekss.itch.io/ <br>
+- Start menu background by St.Toasty / https://srtoasty.itch.io/ <br>
 <br>
 Attack projectile by 25349023 / https://25349023.itch.io/ <br>
 <br>
