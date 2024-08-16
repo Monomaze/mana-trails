@@ -17,6 +17,8 @@ UI Elements <br>
 - Health bar, mana bar by Gowl / https://gowldev.itch.io <br>
 - Icons for the collectable bar by aamatniekss / https://aamatniekss.itch.io/ <br>
 - Start menu background by St.Toasty / https://srtoasty.itch.io/ <br>
+- Pixel key icons by JoshuaJennerDev / https://joshuajennerdev.itch.io/ <br>
+- Pixel skull icon by NYKNCK / https://nyknck.itch.io/ <br>
 <br>
 Attack projectile by 25349023 / https://25349023.itch.io/ <br>
 <br>
@@ -25,3 +27,4 @@ Some elements got some adjustmenst by myself: <br>
     - Mana bar <br>
     - Boss health bar <br>
     - Attack projectile <br>
+    - Key icons <br>
