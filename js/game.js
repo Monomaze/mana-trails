@@ -8,6 +8,12 @@ function init() {
     world = new World(canvas, keyboard);
 }
 
+function startGame() {
+    document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('start-menu').classList.add('d-none');
+    init();
+}
+
 window.addEventListener("keydown", (event) => {
     if (event.key === ' ') {
         keyboard.SPACE = true;

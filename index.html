@@ -31,7 +31,7 @@
 
     <title>Mana Trails</title>
 </head>
-<body onload="init()">
+<body onload="">
 
     <header>
         <img id="logo" src="img/manatrails_logo.svg" alt="">
@@ -51,10 +51,10 @@
                     <span id="goal">Survive and defeat the final boss</span>
                     <span>Collect all scrolls to summon a strong foe!</span>
                 </div>
-                <button id="play-button">PLAY</button>
+                <button id="play-button" onclick="startGame()">PLAY</button>
             </div>
         </div>
-        <canvas id="canvas" width="720"" height="480"></canvas>
+        <canvas class="d-none" id="canvas" width="720"" height="480"></canvas>
     </section>
 
 </body>

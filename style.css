@@ -20,7 +20,10 @@ header {
 
 canvas {
     background-color: black;
-    display: none;
+}
+
+.d-none {
+    display: none !important;
 }
 
 #logo {
