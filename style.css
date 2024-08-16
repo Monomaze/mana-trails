@@ -20,6 +20,7 @@ header {
 
 canvas {
     background-color: black;
+    display: none;
 }
 
 #logo {
@@ -32,4 +33,80 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#start-menu {
+    width: 720px;
+    height: 480px;
+    background-image: url('img/UI/start_menu/start_menu_bg.png');
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    width: 200px;
+    height: 64px;
+}
+
+#play-button {
+    position: relative;
+}
+
+.col-main {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px 8px;
+    height: 440px;
+    width: 335px;
+}
+
+.col {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-info {
+    width: 300px;
+    text-align: center;
+}
+
+#game-img {
+    border-radius: 16px;
+    width: 90%;
+}
+
+#game-img-container {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    height: 100%;
+    width: 90%;
+    background-color: transparent;
+    border-radius: 16px;
+    background-position: center;
+}
+
+.overlay:hover {
+    background-image: url('img/enemies/boss/skull.png');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    width: 90%;
+    z-index: 999;
+    box-shadow: inset 0px 0px 40px 40px black;
+    animation-name: skull;
+    transition: all ease-out 300ms;
+}
+
+#goal {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 8px;
+    margin-bottom: 8px;
 }
