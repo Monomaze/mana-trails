@@ -140,7 +140,9 @@ class World {
 
     spawnBoss() {
         this.bossSpawned = true;
-        this.level.enemies.push(new Boss());
+        let boss = new Boss();
+        boss.world = this;
+        this.level.enemies.push(boss);
         this.bossHealthBar = new BossHealthBar();
     }
 
@@ -183,7 +185,7 @@ class World {
     }
 
     addToMap(moveableObject) {
-        if (moveableObject === this.player) {
+        if (moveableObject instanceof Player || moveableObject instanceof Boss) {
             if (moveableObject.otherDirection) {
                 this.flipImage(moveableObject);
             }

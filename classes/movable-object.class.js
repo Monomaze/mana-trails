@@ -32,7 +32,7 @@ class MovableObject extends DrawableObject {
     }
 
     jump() {
-        return this.speedY = 25;
+        return this.speedY = 30;
     }
 
     isColliding(obj) {

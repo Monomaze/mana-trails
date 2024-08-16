@@ -19,7 +19,7 @@ class DrawableObject {
     }
 
     lastImageOfAnimation(array) {
-        return this.currentImage % array.length !== 0;
+        return this.currentImage == array.length - 1;
     }
 
 

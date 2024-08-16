@@ -45,13 +45,38 @@ class Boss extends Enemies {
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
+        this.loadImages(this.IMAGES_DEATH);
         this.x = 500;
         this.animate();
     }
 
     animate() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALK);
+            if(!this.isDead()) {
+                this.followPlayer();
+            }
+        }, 1000 / 60)
+
+        setInterval(() => {
+            if (this.isDead()) {
+                this.playAnimation(this.IMAGES_DEATH);
+                if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
+                    this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
+                }
+            } else {
+                this.playAnimation(this.IMAGES_WALK);
+            }
         }, 150)
+    }
+
+
+    followPlayer() {
+        if (this.world.player.x < this.x) {
+            this.otherDirection = false;
+            this.moveLeft();
+        } else if (this.world.player.x > this.x) {
+            this.otherDirection = true;
+            this.moveRight();
+        }
     }
 }
