@@ -7,6 +7,10 @@ class Player extends MovableObject {
     world;
     speed = 5;
     walking_sound = new Audio('audio/footstep_grass.ogg');
+    offsetTop = this.height * 0.3;
+    offsetLeft = this.height * 0.1;
+    offsetRight = this.height * 0.1;
+    offsetBottom = 0;
 
     IMAGES_IDLE = [
         'img/player_character/idle/player_idle1.png',

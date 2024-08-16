@@ -3,8 +3,13 @@ class Boss extends Enemies {
     width = 64 * this.sizeMultiplier;
     height = 64 * this.sizeMultiplier;
     y = 410 - this.height;
+    x = 500;
     health = 100;
     speed = 1;
+    offsetTop = this.height * 0.5;
+    offsetLeft = this.width * 0.4;
+    offsetRight = this.width * 0.4;
+    offsetBottom = 0;
     IMAGES_WALK = [
         'img/enemies/boss/boss_walk01.png',
         'img/enemies/boss/boss_walk02.png',
@@ -47,7 +52,6 @@ class Boss extends Enemies {
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_DEATH);
         this.loadImages(this.IMAGES_ATTACK);        
-        this.x = 500;
         this.animate();
     }
 
