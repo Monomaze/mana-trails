@@ -17,7 +17,7 @@ class ParallaxBackground extends MovableObject {
     animate() {
         setInterval(() => {
             if (world !== undefined) {
-                if (!(this.world.keyboard.RIGHT || this.world.keyboard.LEFT)) {
+                if ((this.world.keyboard.RIGHT != this.world.keyboard.LEFT)) {
                     if (this.world.keyboard.RIGHT && this.world.player.x < this.world.level.levelEndXRight && !this.world.player.isDead()) {
                         if (this.direction === 'right') {
                             this.moveRight();
