@@ -1,17 +1,36 @@
 let canvas;
-let ctx;
 let world;
 let keyboard = new Keyboard();
 
 function init() {
     canvas = document.getElementById('canvas');
+    createLevel();
     world = new World(canvas, keyboard);
+    console.log('After init: ', world.level);
 }
 
 function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('start-menu').classList.add('d-none');
+    // document.getElementById('start-menu').classList.add('d-none');
+    document.getElementById('play-button').disabled = true;
     init();
+}
+
+function restartGame() {
+    console.log('Before deletion: ', world.level);
+    world.deleteWorld();
+    world.clearCanvas();
+    clearAllIntervals();
+
+    document.getElementById('restart-button').classList.add('d-none');
+
+    init();
+}
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) {
+        window.clearInterval(i);
+    }
 }
 
 window.addEventListener("keydown", (event) => {

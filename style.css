@@ -20,6 +20,7 @@ header {
 
 canvas {
     background-color: black;
+    position: absolute;
 }
 
 .d-none {
@@ -39,14 +40,13 @@ canvas {
 }
 
 #start-menu {
+    position: relative;
     width: 720px;
     height: 480px;
     background-image: url('img/UI/start_menu/start_menu_bg.png');
     display: flex;
     justify-content: center;
 }
-
-
 
 #play-button {
     position: relative;
@@ -66,11 +66,6 @@ canvas {
     display:flex;
     flex-direction: column;
     align-items: center;
-}
-
-#game-info {
-    width: 300px;
-    text-align: center;
 }
 
 #game-img {
@@ -110,7 +105,7 @@ canvas {
     padding: 16px;
 }
 
-.text {
+.game-info {
     text-align: center;
     width: 85%;
 }
@@ -150,35 +145,48 @@ canvas {
     color: white;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.432);
     transition: 150ms all ease-in-out;
-  }
-  
-  .button-with-icon .icon {
+}
+
+.button-with-icon .icon, .button-with-icon .icon-re {
     margin-right: 8px;
     width: 24px;
     height: 24px;
     transition: all 0.5s ease-in-out;
-  }
-  
-  .button-with-icon:active {
+}
+
+.button-with-icon:active {
     transform: translateY(3px);
     box-shadow:
-      inset 0 16px 2px -15px rgba(0, 0, 0, 0),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.15),
-      inset 0 1px 20px rgba(0, 0, 0, 0.1),
-      0 0 0 #0f988e,
-      0 0 0 2px rgba(255, 255, 255, 0.5),
-      0 0 0 rgba(0, 0, 0, 0),
-      0 0 0 rgba(0, 0, 0, 0);
-  }
-  
-  .button-with-icon:hover .text {
+        inset 0 16px 2px -15px rgba(0, 0, 0, 0),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+        inset 0 1px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 #0f988e,
+        0 0 0 2px rgba(255, 255, 255, 0.5),
+        0 0 0 rgba(0, 0, 0, 0),
+        0 0 0 rgba(0, 0, 0, 0);
+}
+
+.button-with-icon:hover .text {
     transform: translateX(80px);
-  }
-  .button-with-icon:hover .icon {
+}
+
+.button-with-icon:hover .icon {
+    transform: translate(23px);
+}
+
+.button-with-icon:hover .icon-re {
     transform: translate(37px);
-  }
-  
-  .text {
+}
+
+
+.text {
     transition: all 0.5s ease-in-out;
-  }
-  
+}
+
+#restart-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+}

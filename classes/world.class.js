@@ -14,6 +14,7 @@ class World {
     invulnerabilityCooldown = false;
     bossHealthBar;
     bossSpawned = false;
+    gameOver = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -44,6 +45,12 @@ class World {
             this.checkCollisions();
             this.checkShootableObjects()
             this.checkCollectableCollision();
+            if (this.player.isDead() && this.gameOver == false) {
+                this.gameOver = true;
+                setTimeout(() => {
+                    this.showGameOverScreen();
+                }, 1000);
+            }
         }, 100);
     }
 
@@ -58,6 +65,26 @@ class World {
                 this.handleProjectile(projectile);
             }
         }
+    }
+
+    showGameOverScreen() {
+        document.getElementById('restart-button').classList.remove('d-none');
+    }
+
+    clearCanvas() {
+        this.ctx = canvas.getContext('2d');
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    deleteWorld() {
+      this.level = [];
+      this.bossHealthBar = [];
+      this.healthBar = [];
+      this.manaBar = [];
+      this.collectableBar = [];
+      this.boss = [];
+      this.player = [];
+      this.bossSpawned = false;
     }
 
     handleProjectile(projectile) {
