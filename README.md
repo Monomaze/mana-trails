@@ -22,6 +22,7 @@ UI Elements <br>
 <br>
 Attack projectile by 25349023 / https://25349023.itch.io/ <br>
 <br>
+Font by datagoblin / https://datagoblin.itch.io <br>
 Some elements got some adjustmenst by myself: <br>
     - Health bar <br>
     - Mana bar <br>
