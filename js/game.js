@@ -6,7 +6,6 @@ function init() {
     canvas = document.getElementById('canvas');
     createLevel();
     world = new World(canvas, keyboard);
-    console.log('After init: ', world.level);
 }
 
 function startGame() {
@@ -17,7 +16,6 @@ function startGame() {
 }
 
 function restartGame() {
-    console.log('Before deletion: ', world.level);
     world.deleteWorld();
     world.clearCanvas();
     clearAllIntervals();
