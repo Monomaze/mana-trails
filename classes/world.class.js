@@ -68,7 +68,7 @@ class World {
     }
 
     showGameOverScreen() {
-        document.getElementById('restart-button').classList.remove('d-none');
+        document.getElementById('game-over-screen').classList.remove('d-none');
     }
 
     clearCanvas() {

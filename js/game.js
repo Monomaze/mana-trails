@@ -20,7 +20,7 @@ function restartGame() {
     world.clearCanvas();
     clearAllIntervals();
 
-    document.getElementById('restart-button').classList.add('d-none');
+    document.getElementById('game-over-screen').classList.add('d-none');
 
     init();
 }
