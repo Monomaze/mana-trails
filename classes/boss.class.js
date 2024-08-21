@@ -70,7 +70,6 @@ class Boss extends Enemies {
                 }
             } else if (this.playerIsNearby()) {
                 this.playAnimation(this.IMAGES_ATTACK);
-                this.collisionDamage = 20;
             } else {
                 this.playAnimation(this.IMAGES_WALK);
             }
@@ -90,9 +89,5 @@ class Boss extends Enemies {
 
     playerIsNearby() {
         return (this.world.player.x - this.x > 0 && this.world.player.x - this.x < 150) || (this.world.player.x - this.x < 0 && this.world.player.x - this.x > -150);
-    }
-
-    attack() {
-        this.collisionDamage = 30;
     }
 }
