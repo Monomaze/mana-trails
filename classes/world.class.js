@@ -14,7 +14,6 @@ class World {
     invulnerabilityCooldown = false;
     bossHealthBar;
     bossSpawned = false;
-    gameOver = false;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -45,8 +44,7 @@ class World {
             this.checkCollisions();
             this.checkShootableObjects()
             this.checkCollectableCollision();
-            if (this.player.isDead() && this.gameOver == false) {
-                this.gameOver = true;
+            if (this.player.isDead()) {
                 setTimeout(() => {
                     this.showGameOverScreen();
                 }, 1000);
