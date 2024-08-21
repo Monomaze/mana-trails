@@ -189,7 +189,7 @@ canvas {
     transition: all 0.5s ease-in-out;
 }
 
-#game-over-screen {
+#game-over-screen, #winning-screen {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
@@ -208,5 +208,5 @@ canvas {
     font-weight: 700;
     color: white;
     margin-bottom: 24px;
-    
+    text-align: center;
 }

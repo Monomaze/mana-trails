@@ -49,6 +49,11 @@ class World {
                     this.showGameOverScreen();
                 }, 1000);
             }
+            if (this.level.enemies[this.level.enemies.length -1].isDead() && this.bossSpawned == true) {
+                setTimeout(() => {
+                    this.showWinningScreen();
+                }, 1000);
+            }
         }, 100);
     }
 
@@ -67,6 +72,10 @@ class World {
 
     showGameOverScreen() {
         document.getElementById('game-over-screen').classList.remove('d-none');
+    }
+
+    showWinningScreen() {
+        document.getElementById('winning-screen').classList.remove('d-none');
     }
 
     clearCanvas() {

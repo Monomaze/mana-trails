@@ -10,7 +10,6 @@ function init() {
 
 function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
-    // document.getElementById('start-menu').classList.add('d-none');
     document.getElementById('play-button').disabled = true;
     init();
 }
@@ -21,6 +20,7 @@ function restartGame() {
     clearAllIntervals();
 
     document.getElementById('game-over-screen').classList.add('d-none');
+    document.getElementById('winning-screen').classList.add('d-none');
 
     init();
 }
