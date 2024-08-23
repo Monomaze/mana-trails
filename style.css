@@ -45,7 +45,7 @@ canvas {
     justify-content: center;
 }
 
-#start-menu {
+#game {
     position: relative;
     width: 720px;
     height: 480px;
@@ -209,4 +209,28 @@ canvas {
     color: white;
     margin-bottom: 24px;
     text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.option-btns {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+.option-btn {
+    height: 32px;
+    width: 32px;
+    image-rendering: pixelated;
+    cursor: pointer;
+}
+
+.option-btn:hover {
+    transform: scale(1.05);
 }

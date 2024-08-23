@@ -38,7 +38,7 @@
     </header>
 
     <section id="game-section">
-        <div id="start-menu">
+        <div id="game">
             <div class="col-main" id="controls">
                 <div class="col">
                     <img class="key-img" src="img/UI/keys/arrow_keys.png" alt="">
@@ -96,11 +96,13 @@
                     <span class="text">PLAY AGAIN</span>
                 </button>
             </div>
+            <div id="options" class="option-btns row">
+                <img id="unmuted-btn" class="option-btn d-none" src="img/UI/options/unmuted.png" alt="" onclick="muteGame()">
+                <img id="muted-btn" class="option-btn d-none" src="img/UI/options/muted.png" alt="" onclick="unmuteGame()">
+            </div>
             <canvas class="d-none" id="canvas" width="720"" height="480"></canvas>
         </div>
-
     </section>
-
 </body>
 </html>
 
