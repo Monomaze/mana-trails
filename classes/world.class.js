@@ -92,6 +92,17 @@ class World {
       this.boss = [];
       this.player = [];
       this.bossSpawned = false;
+      this.pauseAudio;
+    }
+
+    pauseAudio() {
+        this.bgMusic.pause();
+        this.player.walking_sound.volume = 0;
+    }
+
+    unpauseAudio(){
+        this.bgMusic.play();
+        this.player.walking_sound.volume = 1;
     }
 
     handleProjectile(projectile) {

@@ -11,6 +11,7 @@ function init() {
 function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
+    document.getElementById('unmuted-btn').classList.remove('d-none');
     init();
 }
 
@@ -29,6 +30,18 @@ function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) {
         window.clearInterval(i);
     }
+}
+
+function muteGame() {
+    document.getElementById('unmuted-btn').classList.add('d-none');
+    document.getElementById('muted-btn').classList.remove('d-none');
+    world.pauseAudio();
+}
+
+function unmuteGame() {
+    document.getElementById('muted-btn').classList.add('d-none');
+    document.getElementById('unmuted-btn').classList.remove('d-none');
+    world.unpauseAudio();
 }
 
 window.addEventListener("keydown", (event) => {
