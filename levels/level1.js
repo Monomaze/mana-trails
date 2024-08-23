@@ -4,6 +4,7 @@ function createLevel() {
     level1 = new Level(
         [
             new Mushroom(),
+            new Goblin()
         ],
         [
             new ParallaxBackground('img/background/background_layer_1.png', -719, 'left'),
