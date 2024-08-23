@@ -16,19 +16,39 @@ function startGame() {
     init();
 }
 
-function restartGame() {
+function restartGame(state) {
+    restart = state;
     world.deleteWorld();
     world.clearCanvas();
     clearAllIntervals();
 
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('winning-screen').classList.add('d-none');
+    if (isRestarted()) {
+        init();
+        world.bgMusic.play().then(() => {
+            if (isMuted()) {
+                muteGame();
+            }
+        });
+    }
+}
+
+function backToMenu() {
+    restartGame(false);
     init();
     world.bgMusic.play().then(() => {
-        if (isMuted()) {
-            muteGame();
-        }
+        muteGame();
+        document.getElementById('unmuted-btn').classList.add('d-none');    
+        document.getElementById('muted-btn').classList.add('d-none');
     });
+    document.getElementById('play-button').disabled = false;
+    document.getElementById('canvas').classList.add('d-none');
+    
+}
+
+function isRestarted() {
+    return restart == true;
 }
 
 function clearAllIntervals() {
