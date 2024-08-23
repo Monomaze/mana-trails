@@ -1,6 +1,8 @@
 <h2>CREDITS</h2>
 <h3>AUDIO</h3>
-Kenney All-in-1 Pack / https://kenney.itch.io <br>
+- Footsteps, pick up, hurt sound + bg music by Kenney (All-in-1 Pack) / https://kenney.itch.io <br>
+- Attack sound by Leohpaz / https://leohpaz.itch.io/ <br>
+- Enemy hit sound by JDWasabi / https://jdwasabi.itch.io/ <br>
 <br>
 <h3>ART</h3>
 Player character by LuizMelo / https://luizmelo.itch.io <br>
