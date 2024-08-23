@@ -124,13 +124,13 @@ canvas {
     align-items: center;
     justify-content: center;
     border: 1px solid #0f988e;
-    font-family: "Istok Web", sans-serif;
+    font-family: 'monogram';
     letter-spacing: 1px;
     padding: 0 12px;
     text-align: center;
     width: 120px;
     height: 40px;
-    font-size: 14px;
+    font-size: 22px;
     text-transform: uppercase;
     font-weight: normal;
     border-radius: 3px;
