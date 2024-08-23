@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let muted;
 
 function init() {
     canvas = document.getElementById('canvas');
@@ -22,8 +23,12 @@ function restartGame() {
 
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('winning-screen').classList.add('d-none');
-
     init();
+    world.bgMusic.play().then(() => {
+        if (isMuted()) {
+            muteGame();
+        }
+    });
 }
 
 function clearAllIntervals() {
@@ -32,9 +37,14 @@ function clearAllIntervals() {
     }
 }
 
+function isMuted() {
+    return muted == true;
+}
+
 function muteGame() {
     document.getElementById('unmuted-btn').classList.add('d-none');
     document.getElementById('muted-btn').classList.remove('d-none');
+    muted = true;
     world.pauseAudio();
 }
 
@@ -42,6 +52,7 @@ function unmuteGame() {
     document.getElementById('muted-btn').classList.add('d-none');
     document.getElementById('unmuted-btn').classList.remove('d-none');
     world.unpauseAudio();
+    muted = false;
 }
 
 window.addEventListener("keydown", (event) => {
