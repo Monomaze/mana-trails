@@ -1,6 +1,6 @@
 let canvas;
 let world;
-let keyboard = new Keyboard();
+let keyboard;
 let muted;
 
 function init() {
@@ -13,6 +13,7 @@ function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
+    keyboard = new Keyboard();
     init();
 }
 
@@ -44,7 +45,7 @@ function backToMenu() {
     });
     document.getElementById('play-button').disabled = false;
     document.getElementById('canvas').classList.add('d-none');
-    
+    keyboard = false;
 }
 
 function isRestarted() {
