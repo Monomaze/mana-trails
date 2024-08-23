@@ -9,8 +9,10 @@ class World {
     manaBar = new ManaBar();
     collectableBar = new CollectableBar();
     shootableObjects = [];
-    bgMusic = new Audio('audio/retro_mystic.ogg');
+    bg_music = new Audio('audio/retro_mystic.ogg');
     pickup_sound = new Audio('audio/pickup.ogg');
+    attack_sound = new Audio('audio/attack.wav');
+    enemy_hit_sound = new Audio('audio/enemy_hit.wav');
     shootingCooldown = false;
     invulnerabilityCooldown = false;
     bossHealthBar;
@@ -24,8 +26,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.bgMusic.play();
-        this.bgMusic.loop = true;
+        this.bg_music.play();
+        this.bg_music.loop = true;
     }
 
     setWorld() {
@@ -97,21 +99,26 @@ class World {
     }
 
     pauseAudio() {
-        this.bgMusic.pause();
+        this.bg_music.pause();
         this.pickup_sound.volume = 0;
         this.player.walking_sound.volume = 0;
         this.player.hurt_sound.volume = 0;
+        this.attack_sound.volume = 0;
+        this.enemy_hit_sound.volume = 0;
     }
 
     unpauseAudio(){
-        this.bgMusic.play();
+        this.bg_music.play();
         this.pickup_sound.volume = 1;
         this.player.walking_sound.volume = 1;
         this.player.hurt_sound.volume = 1;
+        this.attack_sound.volume = 1;
+        this.enemy_hit_sound.volume = 1;
     }
 
     handleProjectile(projectile) {
         projectile.world = this;
+        this.attack_sound.play();
         this.shootableObjects.push(projectile);
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
@@ -123,6 +130,8 @@ class World {
     setShootingCooldown() {
         setTimeout(() => {
             this.shootingCooldown = false;
+            this.attack_sound.pause();
+            this.attack_sound.currentTime = 0;
         }, 500);
     }
 
@@ -160,6 +169,7 @@ class World {
             
             this.shootableObjects.forEach((projectile) => {
                 if (enemy.isColliding(projectile) && !enemy.isDead()) {
+                    this.enemy_hit_sound.play();
                     enemy.takeDamage();
                     if (enemy instanceof Boss) {
                         this.bossHealthBar.setPercentage(enemy.health);

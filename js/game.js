@@ -26,7 +26,7 @@ function restartGame(state) {
     document.getElementById('winning-screen').classList.add('d-none');
     if (isRestarted()) {
         init();
-        world.bgMusic.play().then(() => {
+        world.bg_music.play().then(() => {
             if (isMuted()) {
                 muteGame();
             }
@@ -37,7 +37,7 @@ function restartGame(state) {
 function backToMenu() {
     restartGame(false);
     init();
-    world.bgMusic.play().then(() => {
+    world.bg_music.play().then(() => {
         muteGame();
         document.getElementById('unmuted-btn').classList.add('d-none');    
         document.getElementById('muted-btn').classList.add('d-none');
