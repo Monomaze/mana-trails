@@ -51,7 +51,7 @@ class DrawableObject {
     }
 
     drawRect(ctx, color) {
-        if (this instanceof Player || this instanceof Mushroom || this instanceof Boss) {
+        if (this instanceof Player || this instanceof Mushroom || this instanceof Boss || this instanceof Goblin) {
             ctx.beginPath();
             ctx.lineWidth = "5";
             ctx.strokeStyle = color;
