@@ -51,8 +51,7 @@ class World {
                 setTimeout(() => {
                     this.showGameOverScreen();
                 }, 1000);
-            }
-            if (this.level.enemies[this.level.enemies.length -1].isDead() && this.bossSpawned == true) {
+            } else if (this.level.enemies[this.level.enemies.length -1].isDead() && this.bossSpawned == true) {
                 setTimeout(() => {
                     this.showWinningScreen();
                 }, 1000);
