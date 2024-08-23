@@ -10,6 +10,7 @@ class World {
     collectableBar = new CollectableBar();
     shootableObjects = [];
     bgMusic = new Audio('audio/retro_mystic.ogg');
+    pickup_sound = new Audio('audio/pickup.ogg');
     shootingCooldown = false;
     invulnerabilityCooldown = false;
     bossHealthBar;
@@ -84,25 +85,29 @@ class World {
     }
 
     deleteWorld() {
-      this.level = [];
-      this.bossHealthBar = [];
-      this.healthBar = [];
-      this.manaBar = [];
-      this.collectableBar = [];
-      this.boss = [];
-      this.player = [];
-      this.bossSpawned = false;
-      this.pauseAudio;
+        this.pauseAudio();
+        this.level = [];
+        this.bossHealthBar = [];
+        this.healthBar = [];
+        this.manaBar = [];
+        this.collectableBar = [];
+        this.boss = [];
+        this.player = [];
+        this.bossSpawned = false;
     }
 
     pauseAudio() {
         this.bgMusic.pause();
+        this.pickup_sound.volume = 0;
         this.player.walking_sound.volume = 0;
+        this.player.hurt_sound.volume = 0;
     }
 
     unpauseAudio(){
         this.bgMusic.play();
+        this.pickup_sound.volume = 1;
         this.player.walking_sound.volume = 1;
+        this.player.hurt_sound.volume = 1;
     }
 
     handleProjectile(projectile) {
@@ -172,9 +177,11 @@ class World {
                     this.player.gainMana();
                     this.manaBar.setPercentage(this.player.mana);
                     this.killObjectFromArray(this.level.items, item);
+                    this.pickup_sound.play();
                 } else if (item instanceof Scroll) {
                     this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
                     this.killObjectFromArray(this.level.items, item);
+                    this.pickup_sound.play();
                     if (this.collectableBar.percentage == 30 && this.bossSpawned == false) {
                         this.spawnBoss();
                     }

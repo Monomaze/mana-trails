@@ -7,6 +7,7 @@ class Player extends MovableObject {
     world;
     speed = 5;
     walking_sound = new Audio('audio/footstep_grass.ogg');
+    hurt_sound = new Audio('audio/hurt.ogg');
     offsetTop = this.height * 0.3;
     offsetLeft = this.height * 0.1;
     offsetRight = this.height * 0.1;
@@ -94,6 +95,7 @@ class Player extends MovableObject {
             } else if (this.isHurt()) {
                 this.width = 80 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_HURT);
+                this.hurt_sound.play();
             } else if (this.isAboveGround()) {
                 this.width = 72 * this.sizeMultiplier;
                 this.playAnimation(this.IMAGES_JUMP);
