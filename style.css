@@ -3,6 +3,35 @@
     src: url(font/monogram-extended.ttf);
 }
 
+/* @media screen and (orientation: landscape) {
+    
+}
+
+@media screen and (orientation: portrait) {
+    
+} */
+
+@media only screen and (max-width: 720px) {
+    canvas, #content-wrapper {
+        width: 100% !important;
+    }
+
+    header {
+        display: none !important;
+    }
+
+}
+
+@media only screen and (max-height: 480px) {
+    canvas, #content-wrapper {
+        height: 100vh !important;
+    }
+
+    header {
+        display: none !important;
+    }
+}
+
 html {
     height: 100%;
 }
@@ -25,8 +54,13 @@ header {
 }
 
 canvas {
-    background-color: black;
     position: absolute;
+    display: block;
+}
+
+#content-wrapper {
+    display: block;
+    aspect-ratio: auto 720 / 480;
 }
 
 .d-none {
@@ -39,19 +73,29 @@ canvas {
 }
 
 #game-section {
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+#content-wrapper {
+    max-width: 720px;
+    max-height: 480px;
+    display: block;
+}
+
 #game {
     position: relative;
-    width: 720px;
-    height: 480px;
-    background-image: url('img/UI/start_menu/start_menu_bg.png');
-    display: flex;
-    justify-content: center;
+    height: 100%;
+    background-image: url(img/UI/start_menu/start_menu_bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 #play-button {
@@ -63,9 +107,10 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    margin: 20px 8px;
-    height: 440px;
-    width: 335px;
+/*     height: 440px;
+    width: 335px; */
+    height: 100%;
+    width: 95%;
 }
 
 .col {
@@ -106,7 +151,9 @@ canvas {
 }
 
 .key-img {
-    width: 200px;
+/*     width: 200px; */
+    width: 90%;
+    height: 80%;
     image-rendering: pixelated;
     padding: 16px;
 }

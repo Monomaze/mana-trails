@@ -39,88 +39,91 @@
     </header>
 
     <section id="game-section">
-        <div id="game">
-            <div class="col-main" id="controls">
-                <div class="col">
-                    <img class="key-img" src="img/UI/keys/arrow_keys.png" alt="">
-                    <span>Move left / jump / move right</span>
-                </div>
-                <div class="col">
-                    <img class="key-img" src="img/UI/keys/space_key.png" alt="">
-                    <span>Shoot</span>
-                </div>
-            </div>
-            <div class="col-main" id="menu">
-                <div class="col" id="game-img-container">
-                    <img id="game-img" src="img/background/background.png" alt="">
-                    <div class="overlay"></div>
-                </div>
-                    <div class="game-info">Use <img src="img/items/mana_pot/mana_pot01.png" alt=""> to gain more mana. <br >
-                        Collect all <img src="img/items/scroll/scroll01.png" alt=""> to summon a strong foe. Defeat it to win the game!
+        <div id="content-wrapper" width="720" height="480">
+            <div id="game">
+                <div class="col-main" id="controls">
+                    <div class="col">
+                        <img class="key-img" src="img/UI/keys/arrow_keys.png" alt="">
+                        <span>Move left / jump / move right</span>
                     </div>
-                <button class="button-with-icon" id="play-button" onclick="startGame()">
-                    <svg
-                        class="icon"
-                        id="Play"
-                        viewBox="0 0 48 48"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                    <path
-                        class="color000000 svgShape"
-                        fill="#ffffff"
-                        d="M12 39c-.549 0-1.095-.15-1.578-.447A3.008 3.008 0 0 1 9 36V12c0-1.041.54-2.007 1.422-2.553a3.014 3.014 0 0 1 2.919-.132l24 12a3.003 3.003 0 0 1 0 5.37l-24 12c-.42.21-.885.315-1.341.315z"
+                    <div class="col">
+                        <img class="key-img" src="img/UI/keys/space_key.png" alt="">
+                        <span>Shoot</span>
+                    </div>
+                </div>
+                <div class="col-main" id="menu">
+                    <div class="col" id="game-img-container">
+                        <img id="game-img" src="img/background/background.png" alt="">
+                        <div class="overlay"></div>
+                    </div>
+                        <div class="game-info">Use <img src="img/items/mana_pot/mana_pot01.png" alt=""> to gain more mana. <br >
+                            Collect all <img src="img/items/scroll/scroll01.png" alt=""> to summon a strong foe. Defeat it to win the game!
+                        </div>
+                    <button class="button-with-icon" id="play-button" onclick="startGame()">
+                        <svg
+                            class="icon"
+                            id="Play"
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-                    </path>
-                    </svg>
-                  <span class="text">PLAY</span>
-                </button>
-            </div>
-
-            <div class="col d-none" id="game-over-screen">
-                <span id="game-over-text">GAME OVER</span>
-                <div class="row">
-                    <button class="button-with-icon" id="restart-button" onclick="restartGame(true)">
-                        <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                        <path
+                            class="color000000 svgShape"
+                            fill="#ffffff"
+                            d="M12 39c-.549 0-1.095-.15-1.578-.447A3.008 3.008 0 0 1 9 36V12c0-1.041.54-2.007 1.422-2.553a3.014 3.014 0 0 1 2.919-.132l24 12a3.003 3.003 0 0 1 0 5.37l-24 12c-.42.21-.885.315-1.341.315z"
+                            >
+                        </path>
                         </svg>
-                        
-                        <span class="text">TRY AGAIN</span>
-                    </button>
-                    <button class="button-with-icon" id="restart-button" onclick="backToMenu()">
-                        <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
-                        </svg>
-                        
-                        <span class="text">MAIN MENU</span>
+                      <span class="text">PLAY</span>
                     </button>
                 </div>
-            </div>
-            <div class="col d-none" id="winning-screen">
-                <span id="game-over-text">CONGRATULATIONS!<br>YOU WON!</span>
-                <div class="row">
-                    <button class="button-with-icon" id="restart-button" onclick="restartGame(true)">
-                        <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
-                        </svg>
-                        
-                        <span class="text">PLAY AGAIN</span>
-                    </button>
-                    <button class="button-with-icon" id="restart-button" onclick="backToMenu()">
-                        <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
-                        </svg>
-                        
-                        <span class="text">MAIN MENU</span>
-                    </button>
+    
+                <div class="col d-none" id="game-over-screen">
+                    <span id="game-over-text">GAME OVER</span>
+                    <div class="row">
+                        <button class="button-with-icon" id="restart-button" onclick="restartGame(true)">
+                            <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                            </svg>
+                            
+                            <span class="text">TRY AGAIN</span>
+                        </button>
+                        <button class="button-with-icon" id="restart-button" onclick="backToMenu()">
+                            <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                            <span class="text">MAIN MENU</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col d-none" id="winning-screen">
+                    <span id="game-over-text">CONGRATULATIONS!<br>YOU WON!</span>
+                    <div class="row">
+                        <button class="button-with-icon" id="restart-button" onclick="restartGame(true)">
+                            <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                            </svg>
+                            
+                            <span class="text">PLAY AGAIN</span>
+                        </button>
+                        <button class="button-with-icon" id="restart-button" onclick="backToMenu()">
+                            <svg class="icon-re w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                            <span class="text">MAIN MENU</span>
+                        </button>
+                    </div>
+                </div>
+    
+                <div id="options" class="option-btns row">
+                    <img id="unmuted-btn" class="option-btn d-none" src="img/UI/options/unmuted.png" alt="" onclick="muteGame()">
+                    <img id="muted-btn" class="option-btn d-none" src="img/UI/options/muted.png" alt="" onclick="unmuteGame()">
                 </div>
             </div>
-
-            <div id="options" class="option-btns row">
-                <img id="unmuted-btn" class="option-btn d-none" src="img/UI/options/unmuted.png" alt="" onclick="muteGame()">
-                <img id="muted-btn" class="option-btn d-none" src="img/UI/options/muted.png" alt="" onclick="unmuteGame()">
-            </div>
-            <canvas class="d-none" id="canvas" width="720"" height="480"></canvas>
         </div>
+
+        <canvas class="d-none" id="canvas" width="720" height="480"></canvas>
     </section>
 </body>
 </html>
