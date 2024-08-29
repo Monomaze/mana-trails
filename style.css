@@ -30,6 +30,8 @@
     header {
         display: none !important;
     }
+
+
 }
 
 html {
@@ -264,6 +266,10 @@ canvas {
     gap: 8px;
 }
 
+.space-between {
+    justify-content: space-between;
+}
+
 .option-btns {
     position: absolute;
     bottom: 16px;
@@ -280,4 +286,41 @@ canvas {
 
 .option-btn:hover {
     transform: scale(1.05);
+}
+
+#mobile-buttons {
+    width: 80%;
+    z-index: 10;
+    gap: 16px;
+}
+
+#mobile-buttons img {
+    width: 60px;
+    height: 60px;
+    image-rendering: pixelated;
+    opacity: 0.5;
+}
+
+#movement-buttons {
+    display: flex;
+    gap: 32px;
+    position: absolute;
+    bottom: 8px;
+}
+
+#action-buttons {
+    display: flex;
+    gap: 32px;
+}
+
+#jump-button {
+    position: absolute;
+    bottom: 72px;
+    right: 8px;
+}
+
+#attack-button {
+    position: absolute;
+    bottom: 8px;
+    right: 72px;
 }

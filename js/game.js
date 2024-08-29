@@ -11,6 +11,8 @@ let enemy_hit_sound = new Audio('audio/enemy_hit.wav');
 let walking_sound = new Audio('audio/footstep_grass.ogg');
 let hurt_sound = new Audio('audio/hurt.ogg');
 
+let maxWidth = window.matchMedia("(max-height: 480px)");
+
 function init() {
     canvas = document.getElementById('canvas');
     createLevel();
@@ -24,6 +26,12 @@ function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
+
+    console.log(maxWidth);
+    if (maxWidth.matches) {
+        document.getElementById('mobile-buttons').classList.remove('d-none');
+    }
+
     checkMutedGameState();
 }
 
@@ -47,6 +55,7 @@ function backToMenu() {
     clearAllIntervals();
     document.getElementById('play-button').disabled = false;
     document.getElementById('canvas').classList.add('d-none');
+    document.getElementById('mobile-buttons').classList.add('d-none');
     keyboard = false;
 }
 
