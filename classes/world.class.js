@@ -9,10 +9,7 @@ class World {
     manaBar = new ManaBar();
     collectableBar = new CollectableBar();
     shootableObjects = [];
-    bg_music = new Audio('audio/retro_mystic.ogg');
-    pickup_sound = new Audio('audio/pickup.ogg');
-    attack_sound = new Audio('audio/attack.wav');
-    enemy_hit_sound = new Audio('audio/enemy_hit.wav');
+
     shootingCooldown = false;
     invulnerabilityCooldown = false;
     bossHealthBar;
@@ -26,8 +23,8 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
-        this.bg_music.play();
-        this.bg_music.loop = true;
+        bg_music.play();
+        bg_music.loop = true;
     }
 
     setWorld() {
@@ -86,7 +83,7 @@ class World {
     }
 
     deleteWorld() {
-        this.pauseAudio();
+        pauseAudio();
         this.level = [];
         this.bossHealthBar = [];
         this.healthBar = [];
@@ -97,27 +94,11 @@ class World {
         this.bossSpawned = false;
     }
 
-    pauseAudio() {
-        this.bg_music.pause();
-        this.pickup_sound.volume = 0;
-        this.player.walking_sound.volume = 0;
-        this.player.hurt_sound.volume = 0;
-        this.attack_sound.volume = 0;
-        this.enemy_hit_sound.volume = 0;
-    }
-
-    unpauseAudio(){
-        this.bg_music.play();
-        this.pickup_sound.volume = 1;
-        this.player.walking_sound.volume = 1;
-        this.player.hurt_sound.volume = 1;
-        this.attack_sound.volume = 1;
-        this.enemy_hit_sound.volume = 1;
-    }
+    
 
     handleProjectile(projectile) {
         projectile.world = this;
-        this.attack_sound.play();
+        attack_sound.play();
         this.shootableObjects.push(projectile);
         this.player.consumeMana();
         this.manaBar.setPercentage(this.player.mana);
@@ -129,8 +110,8 @@ class World {
     setShootingCooldown() {
         setTimeout(() => {
             this.shootingCooldown = false;
-            this.attack_sound.pause();
-            this.attack_sound.currentTime = 0;
+            attack_sound.pause();
+            attack_sound.currentTime = 0;
         }, 500);
     }
 
@@ -168,7 +149,7 @@ class World {
             
             this.shootableObjects.forEach((projectile) => {
                 if (enemy.isColliding(projectile) && !enemy.isDead()) {
-                    this.enemy_hit_sound.play();
+                    enemy_hit_sound.play();
                     enemy.takeDamage();
                     if (enemy instanceof Boss) {
                         this.bossHealthBar.setPercentage(enemy.health);
@@ -186,11 +167,11 @@ class World {
                     this.player.gainMana();
                     this.manaBar.setPercentage(this.player.mana);
                     this.killObjectFromArray(this.level.items, item);
-                    this.pickup_sound.play();
+                    pickup_sound.play();
                 } else if (item instanceof Scroll) {
                     this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
                     this.killObjectFromArray(this.level.items, item);
-                    this.pickup_sound.play();
+                    pickup_sound.play();
                     if (this.collectableBar.percentage == 30 && this.bossSpawned == false) {
                         this.spawnBoss();
                     }
