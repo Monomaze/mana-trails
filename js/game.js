@@ -26,8 +26,7 @@ function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
-
-    console.log(maxWidth);
+    
     if (maxWidth.matches) {
         document.getElementById('mobile-buttons').classList.remove('d-none');
     }
