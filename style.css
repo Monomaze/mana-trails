@@ -23,7 +23,7 @@
 
 @media only screen and (max-width: 720px) {
     canvas, #content-wrapper {
-        width: 100% !important;
+        width: 100vw !important;
     }
 
     header {
@@ -41,9 +41,7 @@
         display: none !important;
     }
 
-    span {
-        font-size: 18px;
-    }
+
 }
 
 html {
@@ -55,7 +53,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
     margin: 0;
     font-family: monogram;
 }
@@ -341,4 +338,20 @@ canvas {
 
 #mobile-keys {
     display: none;
+}
+
+#mobile-keys, #desktop-keys {
+    gap: 32px;
+}
+
+.url {
+    text-decoration: none;
+}
+
+.url:hover {
+    text-decoration: underline;
+}
+
+#controls p {
+    margin: 0;
 }
