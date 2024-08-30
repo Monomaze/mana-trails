@@ -115,11 +115,11 @@
                         </button>
                     </div>
                 </div>
-    
+
                 <div class="row space-between d-none" id="mobile-buttons">
                     <div id="movement-buttons">
-                        <img src="img/UI/keys/mobile_left_key.png" alt="">
-                        <img src="img/UI/keys/mobile_right_key.png" alt="">
+                        <img id="left-button" src="img/UI/keys/mobile_left_key.png" alt="">
+                        <img id="right-button" src="img/UI/keys/mobile_right_key.png" alt="">
                     </div>
                     <div id="action-buttons">
                         <img id="attack-button" src="img/UI/keys/mobile_attack_key.png" alt="">
@@ -127,9 +127,11 @@
                     </div>
                 </div>
 
-                <div id="options" class="option-btns row">
-                    <img id="unmuted-btn" class="option-btn d-none" src="img/UI/options/unmuted.png" alt="" onclick="muteGame()">
-                    <img id="muted-btn" class="option-btn d-none" src="img/UI/options/muted.png" alt="" onclick="unmuteGame()">
+                <div id="options">
+                    <div class="option-btns row">
+                        <img id="unmuted-btn" class="option-btn d-none" src="img/UI/options/unmuted.png" alt="" onclick="muteGame()">
+                        <img id="muted-btn" class="option-btn d-none" src="img/UI/options/muted.png" alt="" onclick="unmuteGame()">
+                    </div>
                 </div>
             </div>
         </div>

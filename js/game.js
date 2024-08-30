@@ -16,6 +16,7 @@ let maxWidth = window.matchMedia("(max-height: 480px)");
 function init() {
     canvas = document.getElementById('canvas');
     createLevel();
+    initMobileButtons();
     world = new World(canvas, keyboard);
 
 }
@@ -153,6 +154,53 @@ window.addEventListener("keyup", (event) => {
         keyboard.UP = false;
     }
 });
+
+
+function initMobileButtons() {
+    addEventListenersForMovementButtons();
+    addEventListenersForActionButtons();
+}
+
+function addEventListenersForMovementButtons() {
+    document.getElementById('left-button').addEventListener('touchstart', () => {
+        keyboard.LEFT = true;
+        document.getElementById('left-button').style.opacity = 1;
+    });
+    document.getElementById('left-button').addEventListener('touchend', () => {
+        keyboard.LEFT = false;
+        document.getElementById('left-button').style.opacity = 0.5;
+    });
+
+    document.getElementById('right-button').addEventListener('touchstart', () => {
+        keyboard.RIGHT = true;
+        document.getElementById('right-button').style.opacity = 1;
+    });
+    document.getElementById('right-button').addEventListener('touchend', () => {
+        keyboard.RIGHT = false;
+        document.getElementById('right-button').style.opacity = 0.5;
+    });
+}
+
+function addEventListenersForActionButtons() {
+    document.getElementById('attack-button').addEventListener('touchstart', () => {
+        keyboard.SPACE = true;
+        document.getElementById('attackt-button').style.opacity = 1;
+    });
+    document.getElementById('attack-button').addEventListener('touchend', () => {
+        keyboard.SPACE = false;
+        document.getElementById('attack-button').style.opacity = 0.5;
+    });
+
+    document.getElementById('jump-button').addEventListener('touchstart', () => {
+        keyboard.UP = true;
+        document.getElementById('jump-button').style.opacity = 1;
+    });
+    document.getElementById('jump-button').addEventListener('touchend', () => {
+        keyboard.UP = false;
+        document.getElementById('jump-button').style.opacity = 0.5;
+    });
+}
+
 
 window.addEventListener('unhandledrejection', event => {
     event.preventDefault();
