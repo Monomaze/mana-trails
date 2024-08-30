@@ -11,6 +11,16 @@
     
 } */
 
+@media (pointer:none), (pointer:coarse) {
+    #mobile-keys {
+        display: flex !important;
+    }
+
+    #desktop-keys {
+        display: none !important;
+    }
+}
+
 @media only screen and (max-width: 720px) {
     canvas, #content-wrapper {
         width: 100% !important;
@@ -27,12 +37,12 @@
         height: 100vh !important;
     }
 
-    header, #desktop-keys {
+    header  {
         display: none !important;
     }
 
-    #mobile-keys {
-        display: flex !important;
+    span {
+        font-size: 18px;
     }
 }
 
@@ -93,6 +103,10 @@ canvas {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#menu-area {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
@@ -107,7 +121,7 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 125%;
+    height: 100%;
     width: 95%;
 }
 
