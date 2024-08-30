@@ -17,7 +17,6 @@ function init() {
     canvas = document.getElementById('canvas');
     createLevel();
     world = new World(canvas, keyboard);
-
 }
 
 function startGame() {
@@ -27,12 +26,16 @@ function startGame() {
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
     
+    checkIfMobile();
+
+    checkMutedGameState();
+}
+
+function checkIfMobile() {
     if (maxWidth.matches) {
         initMobileButtons();
         document.getElementById('mobile-buttons').classList.remove('d-none');
     }
-
-    checkMutedGameState();
 }
 
 function restartGame(state) {
