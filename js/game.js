@@ -184,7 +184,7 @@ function addEventListenersForMovementButtons() {
 function addEventListenersForActionButtons() {
     document.getElementById('attack-button').addEventListener('touchstart', () => {
         keyboard.SPACE = true;
-        document.getElementById('attackt-button').style.opacity = 1;
+        document.getElementById('attack-button').style.opacity = 1;
     });
     document.getElementById('attack-button').addEventListener('touchend', () => {
         keyboard.SPACE = false;
