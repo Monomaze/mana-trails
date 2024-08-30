@@ -1,3 +1,6 @@
+<h2>IMPORTANT INFORMATION</h2>
+The "Impressum" won't work until you create your own "imprint.html" in the html folder.
+
 <h2>CREDITS</h2>
 <h3>AUDIO</h3>
 - Footsteps, pick up, hurt sound + bg music by Kenney (All-in-1 Pack) / https://kenney.itch.io <br>
