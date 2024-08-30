@@ -21,6 +21,7 @@ UI Elements <br>
 - Start menu background by St.Toasty / https://srtoasty.itch.io/ <br>
 - Pixel key icons by JoshuaJennerDev / https://joshuajennerdev.itch.io/ <br>
 - Pixel skull icon by NYKNCK / https://nyknck.itch.io/ <br>
+- Mobile Key icons by Kenney (All-in-1 Pack) / https://kenney.itch.io <br>
 <br>
 Attack projectile by 25349023 / https://25349023.itch.io/ <br>
 <br>

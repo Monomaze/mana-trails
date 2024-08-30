@@ -107,8 +107,6 @@ canvas {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-/*     height: 440px;
-    width: 335px; */
     height: 125%;
     width: 95%;
 }
@@ -151,7 +149,6 @@ canvas {
 }
 
 .key-img {
-/*     width: 200px; */
     width: 90%;
     height: 80%;
     image-rendering: pixelated;
@@ -170,8 +167,6 @@ canvas {
     width: 85%;
 }
 
-
-/* From Uiverse.io by elijahgummer */ 
 .button-with-icon {
     overflow: hidden;
     display: inline-flex;
