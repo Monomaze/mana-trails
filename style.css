@@ -252,6 +252,7 @@ canvas {
 #game-over-screen, #winning-screen {
     position: absolute;
     left: 50%;
+    top: 0;
     transform: translate(-50%, 0);
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.4);
