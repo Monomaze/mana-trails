@@ -60,11 +60,6 @@ canvas {
     display: block;
 }
 
-#content-wrapper {
-    display: block;
-    aspect-ratio: auto 720 / 480;
-}
-
 .d-none {
     display: none !important;
 }
@@ -86,6 +81,7 @@ canvas {
     max-width: 720px;
     max-height: 480px;
     display: block;
+    aspect-ratio: auto 720 / 480;
 }
 
 #game {

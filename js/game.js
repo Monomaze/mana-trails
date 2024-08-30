@@ -16,7 +16,6 @@ let maxWidth = window.matchMedia("(max-height: 480px)");
 function init() {
     canvas = document.getElementById('canvas');
     createLevel();
-    initMobileButtons();
     world = new World(canvas, keyboard);
 
 }
@@ -29,6 +28,7 @@ function startGame() {
     document.getElementById('unmuted-btn').classList.remove('d-none');
     
     if (maxWidth.matches) {
+        initMobileButtons();
         document.getElementById('mobile-buttons').classList.remove('d-none');
     }
 
