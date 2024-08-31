@@ -5,10 +5,6 @@
 
 /* @media screen and (orientation: landscape) {
     
-}
-
-@media screen and (orientation: portrait) {
-    
 } */
 
 @media (pointer:none), (pointer:coarse) {
@@ -21,17 +17,6 @@
     }
 }
 
-@media only screen and (max-width: 720px) {
-    canvas, #content-wrapper {
-        width: 100vw !important;
-    }
-
-    header {
-        display: none !important;
-    }
-
-}
-
 @media only screen and (max-height: 480px) {
     canvas, #content-wrapper {
         height: 100vh !important;
@@ -40,9 +25,63 @@
     header  {
         display: none !important;
     }
-
-
 }
+
+
+@media only screen and (max-width: 720px) {
+    canvas, #content-wrapper {
+        width: 100vw !important;
+    }
+
+    header {
+        display: none !important;
+    }
+}
+
+@media screen and (orientation: portrait) and (max-width: 720px) {
+    #rotate-phone {
+        display: unset !important;
+        background-image: url('img/background/forest.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+        width: 100vw;
+        z-index: 999;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    #rotate-phone div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    #rotate-phone svg {
+        width: 200px;
+        height: 200px;
+        color:white;
+        z-index: 999;
+        animation-name: rotate90;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+    }
+    
+    #rotate-phone p {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+    }
+    
+    @keyframes rotate90 {
+        from {transform: rotate(0);}
+        to {transform: rotate(90deg);}
+    }
+} 
+
 
 html {
     height: 100%;
@@ -55,6 +94,10 @@ body {
     background-size: cover;
     margin: 0;
     font-family: monogram;
+}
+
+#rotate-phone {
+    display: none;
 }
 
 header {
@@ -167,11 +210,11 @@ canvas {
 }
 
 .key-img-mob {
-        width: 60px;
-        height: 60px;
-        image-rendering: pixelated;
-        padding: 16px;
-    }
+    width: 60px;
+    height: 60px;
+    image-rendering: pixelated;
+    padding: 16px;
+}
 
 .game-info {
     text-align: center;
