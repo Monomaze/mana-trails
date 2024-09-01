@@ -14,7 +14,7 @@ class Scroll extends CollectableObject {
         super().loadImage('img/items/scroll/scroll01.png');
         this.loadImages(this.IMAGES_SPIN);
         this.x = x;
-        this.y = 410 - this.height;
+        this.y = 410 - this.height - Math.random() * 250;
         this.animate();
     }
 }

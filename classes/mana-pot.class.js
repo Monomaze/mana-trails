@@ -10,10 +10,10 @@ class ManaPot extends CollectableObject {
         'img/items/mana_pot/mana_pot08.png'
     ];
 
-    constructor() {
+    constructor(x) {
         super().loadImage('img/items/mana_pot/mana_pot01.png');
         this.loadImages(this.IMAGES_SPIN);
-        this.x = 300;
+        this.x = x;
         this.y = 410 - this.height;
         this.animate();
     }

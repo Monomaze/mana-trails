@@ -3,7 +3,7 @@ class Boss extends Enemies {
     width = 64 * this.sizeMultiplier;
     height = 64 * this.sizeMultiplier;
     y = 410 - this.height;
-    x = 500;
+    x = 2400;
     health = 100;
     speed = 1;
     offsetTop = this.height * 0.15;
