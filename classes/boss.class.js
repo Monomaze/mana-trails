@@ -5,7 +5,7 @@ class Boss extends Enemies {
     y = 410 - this.height;
     x = 2400;
     health = 100;
-    speed = 1;
+    speed = 2;
     offsetTop = this.height * 0.15;
     offsetLeft = this.width * 0.1;
     offsetRight = this.width * 0.1;

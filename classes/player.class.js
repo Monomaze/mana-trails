@@ -124,7 +124,7 @@ class Player extends MovableObject {
     }
 
     gainMana() {
-        this.mana += 30;
+        this.mana += 60;
         if (this.mana > 100) {
             this.mana = 100;
         }
