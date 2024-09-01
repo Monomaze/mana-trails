@@ -83,7 +83,7 @@ class MovableObject extends DrawableObject {
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit;
         timePassed = timePassed / 1000;
-        return timePassed < 0.3;
+        return timePassed < 0.2;
     }
 
     /**
@@ -91,6 +91,6 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} when true, health of player/enemy is 0
      */
     isDead() {
-        return this.health == 0;
+        return this.health <= 0;
     }
 }
