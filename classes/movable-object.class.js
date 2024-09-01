@@ -59,8 +59,8 @@ class MovableObject extends DrawableObject {
     isColliding(obj) {
         return  (this.x + this.width - this.offsetRight) >= obj.x + obj.offsetLeft && 
                 this.x + this.offsetLeft <= (obj.x + obj.width - obj.offsetRight) && 
-                (this.y + this.height - this.offsetBottom) >= obj.y + obj.offsetTop&&
-                (this.y + this.offsetTop) <= (obj.y + obj.height - obj.offsetBottom)
+                (this.y + this.height - this.offsetBottom) >= obj.y + obj.offsetTop &&
+                (this.y + this.offsetTop) <= (obj.y + obj.height - obj.offsetBottom);
     }
 
     /**
@@ -91,6 +91,6 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} when true, health of player/enemy is 0
      */
     isDead() {
-        return this.health <= 0;
+        return this.health == 0;
     }
 }
