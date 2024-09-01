@@ -54,7 +54,7 @@ function createLevel() {
             new BackgroundObject('img/background/ground.png', 719 * 3)
         ],
         [
-            new ManaPot(800),
+            new ManaPot(650),
             new ManaPot(1150),
             new ManaPot(1800),
             new ManaPot(-250),
