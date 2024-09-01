@@ -18,10 +18,10 @@ class Goblin extends Enemies {
         'img/enemies/goblin/goblin_walk8.png'
     ];
     IMAGES_DEATH = [
-        'img/enemies/mushroom/mushroom_death01.png',
-        'img/enemies/mushroom/mushroom_death02.png',
-        'img/enemies/mushroom/mushroom_death03.png',
-        'img/enemies/mushroom/mushroom_death04.png'
+        'img/enemies/goblin/goblin_death1.png',
+        'img/enemies/goblin/goblin_death2.png',
+        'img/enemies/goblin/goblin_death3.png',
+        'img/enemies/goblin/goblin_death4.png'
     ];
 
     constructor(startingPoint) {
