@@ -63,6 +63,7 @@ class World {
                 }, 1000);
             } else if (this.level.enemies[this.level.enemies.length -1].isDead() && this.bossSpawned == true) {
                 setTimeout(() => {
+                    this.keyboard = false;
                     this.showWinningScreen();
                 }, 1000);
             }
