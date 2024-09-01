@@ -14,6 +14,9 @@ class ManaBar extends StatusBar {
         'img/UI/mana_bar/mana_bar100.png'
     ];
 
+    /**
+     * Initialises ManaBar object by loading images, setting the canvas position and setting the starting mana.
+     */
     constructor() {
         super().loadImages(this.IMAGES);
         this.x = 30;

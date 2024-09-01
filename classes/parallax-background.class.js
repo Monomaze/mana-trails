@@ -7,6 +7,12 @@ class ParallaxBackground extends MovableObject {
     world;
     direction;
 
+    /**
+     * Initialises ParallaxBackgrround object by loading all images, setting the x potion, setting the moving direction and calling the animate function.
+     * @param {string} imagePath 
+     * @param {number} x 
+     * @param {string} direction 
+     */
     constructor(imagePath, x, direction) {
         super().loadImage(imagePath);
         this.x = x;
@@ -14,6 +20,9 @@ class ParallaxBackground extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Animates the object depending player inputs.
+     */
     animate() {
         setInterval(() => {
             if (world !== undefined) {

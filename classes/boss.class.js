@@ -47,6 +47,9 @@ class Boss extends Enemies {
         'img/enemies/boss/boss_death13.png'
     ];
 
+    /**
+     * Initialises the Boss object by loading all images and starting the animate function.
+     */
     constructor() {
         super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
@@ -55,6 +58,9 @@ class Boss extends Enemies {
         this.animate();
     }
 
+    /**
+     * Animates the objects depending on game state.
+     */
     animate() {
         setInterval(() => {
             if(!this.isDead()) {
@@ -76,7 +82,9 @@ class Boss extends Enemies {
         }, 150)
     }
 
-
+    /**
+     * Sets the movement direction depending on player position.
+     */
     followPlayer() {
         if (this.world.player.x < this.x) {
             this.otherDirection = false;
@@ -87,6 +95,10 @@ class Boss extends Enemies {
         }
     }
 
+    /**
+     * Checks if player is nearby.
+     * @returns {boolean} true when player is nearby
+     */
     playerIsNearby() {
         return (this.world.player.x - this.x > 0 && this.world.player.x - this.x < 150) || (this.world.player.x - this.x < 0 && this.world.player.x - this.x > -150);
     }

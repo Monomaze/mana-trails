@@ -9,10 +9,16 @@ class Enemies extends MovableObject {
     world;
     collisionDamage = 10;
 
+    /**
+     * Initialises Enemies object by calling the animate() function.
+     */
     constructor() {
         super().animate();
     }
 
+    /**
+     * Handles animation depending on different states and lets the object move to the left.
+     */
     animate() {
         setInterval(() => {
             if (!this.isDead()) {
@@ -32,6 +38,9 @@ class Enemies extends MovableObject {
         }, 150)
     }
 
+    /**
+     * Reducing the health or setting it to 0 if health would be lower than 0.
+     */
     takeDamage() {
         if (this.health < 0) {
             this.health = 0;

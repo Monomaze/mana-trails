@@ -24,6 +24,10 @@ class Mushroom extends Enemies {
         'img/enemies/mushroom/mushroom_death04.png'
     ];
 
+    /**
+     * Initialises the Mushroom object by loading all images and setting the starting point and movement speed with a randomness factor.
+     * @param {number} startingPoint - Starting point on x axis on canvas
+     */
     constructor(startingPoint) {
         super().loadImage('../img/enemies/mushroom/mushroom_idle.png');
         this.loadImages(this.IMAGES_WALK);

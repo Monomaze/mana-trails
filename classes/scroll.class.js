@@ -10,6 +10,10 @@ class Scroll extends CollectableObject {
         'img/items/scroll/scroll08.png'
     ];
 
+    /**
+     * Initialises the Scroll object by loading all images, setting the canvas position and calling the animate function.
+     * @param {number} x - Canvas position on x axis
+     */
     constructor(x) {
         super().loadImage('img/items/scroll/scroll01.png');
         this.loadImages(this.IMAGES_SPIN);

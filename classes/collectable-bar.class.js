@@ -9,6 +9,9 @@ class CollectableBar extends StatusBar {
         'img/UI/collectable_bar/scrolls-progress03.png'
     ];
 
+    /**
+     * Initialises CollectableBar object by loading images, setting the canvas position and setting the starting progress.
+     */
     constructor() {
         super().loadImages(this.IMAGES);
         this.x = 30;

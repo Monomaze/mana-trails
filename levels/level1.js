@@ -1,5 +1,8 @@
 let level1;
 
+/**
+ * Initializes all starting objects for the level.
+ */
 function createLevel() {
     level1 = new Level(
         [

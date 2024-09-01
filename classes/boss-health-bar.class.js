@@ -17,6 +17,9 @@ class BossHealthBar extends StatusBar {
         'img/UI/boss_health_bar/boss_health_bar100.png'
     ];
 
+    /**
+     * Initialises BossHealthBar by loading the images, setting the canvas position and setting the starting health.
+     */
     constructor() {
         super().loadImages(this.IMAGES);        
         this.x = 480;

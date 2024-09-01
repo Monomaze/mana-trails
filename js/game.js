@@ -2,7 +2,6 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let muted;
-let restart;
 let lastTouchEnd = 0;
 
 let bg_music = new Audio('audio/retro_mystic.ogg');
@@ -12,35 +11,45 @@ let enemy_hit_sound = new Audio('audio/enemy_hit.wav');
 let walking_sound = new Audio('audio/footstep_grass.ogg');
 let hurt_sound = new Audio('audio/hurt.ogg');
 
-let maxWidth = window.matchMedia("(max-height: 480px)");
+let maxHeight = window.matchMedia("(max-height: 480px)");
 
+
+/**
+ * Initialises the game world.
+ */
 function init() {
     canvas = document.getElementById('canvas');
     createLevel();
     world = new World(canvas, keyboard);
 }
 
+/**
+ * Starts the game by initializing the keyboard, call the init() function for the game world and showing the canvas.
+ */
 function startGame() {
     keyboard = new Keyboard();
     init();
+    checkMutedGameState();
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
-    
-    checkIfMobile();
-
-    checkMutedGameState();
 }
 
+/**
+ * Checks if screen is a specific maxHeight to determine if user is playing on mobile or desktop. If true, it calls a function to initialise the mobile buttons
+ * and shows the mobile buttons afterwards.
+ */
 function checkIfMobile() {
-    if (maxWidth.matches) {
+    if (maxHeight.matches) {
         initMobileButtons();
         document.getElementById('mobile-buttons').classList.remove('d-none');
     }
 }
 
-function restartGame(state) {
-    restart = state;
+/**
+ * Calls all necessary functions to restart the game and hides the winning screen or game over screen.
+ */
+function restartGame() {
     world.deleteWorld();
     world.clearCanvas();
     clearAllIntervals();
@@ -50,38 +59,49 @@ function restartGame(state) {
     checkMutedGameState();
 }
 
+/**
+ * Calls all necessary functions to set the game state back to the beginning, shows the main menu and disables the keyboard inputs.
+ */
 function backToMenu() {
-    disableOverlayButtons();
-    restartGame(false);
+    restartGame();
     init();
     muteGame();
-    disableOverlayButtons();
+    hideOverlayButtons();
     clearAllIntervals();
     document.getElementById('play-button').disabled = false;
     document.getElementById('canvas').classList.add('d-none');
     document.getElementById('mobile-buttons').classList.add('d-none');
+    muted = false;
     keyboard = false;
 }
 
-function isRestarted() {
-    return restart == true;
-}
-
-function disableOverlayButtons() {
+/**
+ * Hides the mute button.
+ */
+function hideOverlayButtons() {
     document.getElementById('unmuted-btn').classList.add('d-none');    
     document.getElementById('muted-btn').classList.add('d-none');
 }
 
+/**
+ * Clears all active intervals.
+ */
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) {
         window.clearInterval(i);
     }
 }
 
+/**
+ * @returns muted as true
+ */
 function isMuted() {
     return muted == true;
 }
 
+/**
+ * Shows the muted audio button, sets muted state to true and mutes all audio.
+ */
 function muteGame() {
     document.getElementById('unmuted-btn').classList.add('d-none');
     document.getElementById('muted-btn').classList.remove('d-none');
@@ -89,6 +109,9 @@ function muteGame() {
     pauseAudio();
 }
 
+/**
+ * Shows the unmuted audio button, sets muted state to false and unmutes all audio.
+ */
 function unmuteGame() {
     document.getElementById('muted-btn').classList.add('d-none');
     document.getElementById('unmuted-btn').classList.remove('d-none');
@@ -96,6 +119,10 @@ function unmuteGame() {
     muted = false;
 }
 
+
+/**
+ * Pauses audio or sets the volume to 0.
+ */
 function pauseAudio() {
     bg_music.pause();
     pickup_sound.volume = 0;
@@ -105,6 +132,9 @@ function pauseAudio() {
     enemy_hit_sound.volume = 0;
 }
 
+/**
+ * Unpauses audio or sets the volume to 1.
+ */
 function unpauseAudio() {
     bg_music.play();
     pickup_sound.volume = 1;
@@ -114,17 +144,21 @@ function unpauseAudio() {
     enemy_hit_sound.volume = 1;
 }
 
+/**
+ * Checks muted state and mutes or unmutes game depending on it.
+ */
 function checkMutedGameState() {
-    if (isRestarted()) {
-        init();
-            if (isMuted()) {
-                muteGame();
-            } else {
-                unmuteGame();
-            }
+    init();
+    if (isMuted()) {
+        muteGame();
+    } else {
+        unmuteGame();
     }
 }
 
+/**
+ * Event listener for keydown events.
+ */
 window.addEventListener("keydown", (event) => {
     if (event.key === ' ') {
         keyboard.SPACE = true;
@@ -143,6 +177,9 @@ window.addEventListener("keydown", (event) => {
     }
 });
 
+/**
+ * Event listener for keyup events.
+ */
 window.addEventListener("keyup", (event) => {
     if (event.key === ' ') {
         keyboard.SPACE = false;
@@ -161,12 +198,17 @@ window.addEventListener("keyup", (event) => {
     }
 });
 
-
+/**
+ * Initialises the mobile button event listeners.
+ */
 function initMobileButtons() {
     addEventListenersForMovementButtons();
     addEventListenersForActionButtons();
 }
 
+/**
+ * Adds event listeners for movement mobile buttons.
+ */
 function addEventListenersForMovementButtons() {
     document.getElementById('left-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
@@ -191,6 +233,9 @@ function addEventListenersForMovementButtons() {
     });
 }
 
+/**
+ * Adds event listeners for action mobile buttons.
+ */
 function addEventListenersForActionButtons() {
     document.getElementById('attack-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
@@ -215,6 +260,9 @@ function addEventListenersForActionButtons() {
     });
 }
 
+/**
+ * Prevents default of unhandled rejection errors.
+ */
 window.addEventListener('unhandledrejection', event => {
     event.preventDefault();
 });

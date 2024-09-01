@@ -14,6 +14,9 @@ class HealthBar extends StatusBar {
         'img/UI/health_bar/health_bar100.png'
     ];
 
+    /**
+     * Initialises HealthBar object by loading images, setting the canvas position and setting the starting health.
+     */
     constructor() {
         super().loadImages(this.IMAGES);
         this.x = 30;

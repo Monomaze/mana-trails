@@ -49,6 +49,9 @@ class Player extends MovableObject {
         'img/player_character/hurt/player_hurt4.png'
     ]
 
+    /**
+     * Initialises the Player object by loading all images and calling the applyGravity and animate functions.
+     */
     constructor() {
         super().loadImage('../img/player_character/idle/player_idle1.png');
         this.loadImages(this.IMAGES_WALK);
@@ -60,6 +63,11 @@ class Player extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Moving the object and plays sounds depending on player inputs. 
+     * Animates the object depending on game state.
+     * Set the camera to the player.
+     */
     animate() {
         setInterval(() => {
             walking_sound.pause();
@@ -110,12 +118,18 @@ class Player extends MovableObject {
         }, 150);
     }
 
+    /**
+     * Stops playing walking_sound when player is in the air.
+     */
     playWalkingSoundIfOnGround() {
         if (!this.isAboveGround()) {
             walking_sound.play();
         }
     }
 
+    /**
+     * Reduces player mana.
+     */
     consumeMana() {
         this.mana -= 10;
         if (this.mana < 0) {
@@ -123,6 +137,9 @@ class Player extends MovableObject {
         } 
     }
 
+    /**
+     * Increses player mana.
+     */
     gainMana() {
         this.mana += 60;
         if (this.mana > 100) {

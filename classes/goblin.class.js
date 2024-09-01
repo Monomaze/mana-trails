@@ -24,8 +24,12 @@ class Goblin extends Enemies {
         'img/enemies/goblin/goblin_death4.png'
     ];
 
+    /**
+     * Initialises the Goblin object by loading all images and setting the starting point and movement speed with a randomness factor.
+     * @param {number} startingPoint - Starting point on x axis on canvas
+     */
     constructor(startingPoint) {
-        super().loadImage('../img/enemies/mushroom/mushroom_idle.png');
+        super().loadImage(this.IMAGES_WALK[0]);
         this.loadImages(this.IMAGES_WALK);
         this.loadImages(this.IMAGES_DEATH);
 

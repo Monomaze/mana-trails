@@ -4,7 +4,11 @@ class BackgroundObject extends MovableObject {
     width = 720;
     height = 480;
 
-
+    /**
+     * Initialises Background object by loading the images and setting the canvas position.
+     * @param {*} imagePath - Path of the image.
+     * @param {*} x - Canvas position of the object.
+     */
     constructor(imagePath, x) {
         super().loadImage(imagePath);
         this.x = x;
