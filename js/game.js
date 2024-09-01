@@ -119,6 +119,8 @@ function checkMutedGameState() {
         init();
             if (isMuted()) {
                 muteGame();
+            } else {
+                unmuteGame();
             }
     }
 }
