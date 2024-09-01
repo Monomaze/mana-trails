@@ -3,6 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let muted;
 let restart;
+let lastTouchEnd = 0;
 
 let bg_music = new Audio('audio/retro_mystic.ogg');
 let pickup_sound = new Audio('audio/pickup.ogg');
@@ -165,45 +166,52 @@ function initMobileButtons() {
 }
 
 function addEventListenersForMovementButtons() {
-    document.getElementById('left-button').addEventListener('touchstart', () => {
+    document.getElementById('left-button').addEventListener('touchstart', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.LEFT = true;
         document.getElementById('left-button').style.opacity = 1;
     });
-    document.getElementById('left-button').addEventListener('touchend', () => {
+    document.getElementById('left-button').addEventListener('touchend', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.LEFT = false;
         document.getElementById('left-button').style.opacity = 0.5;
     });
 
-    document.getElementById('right-button').addEventListener('touchstart', () => {
+    document.getElementById('right-button').addEventListener('touchstart', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.RIGHT = true;
         document.getElementById('right-button').style.opacity = 1;
     });
-    document.getElementById('right-button').addEventListener('touchend', () => {
+    document.getElementById('right-button').addEventListener('touchend', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.RIGHT = false;
         document.getElementById('right-button').style.opacity = 0.5;
     });
 }
 
 function addEventListenersForActionButtons() {
-    document.getElementById('attack-button').addEventListener('touchstart', () => {
+    document.getElementById('attack-button').addEventListener('touchstart', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.SPACE = true;
         document.getElementById('attack-button').style.opacity = 1;
     });
-    document.getElementById('attack-button').addEventListener('touchend', () => {
+    document.getElementById('attack-button').addEventListener('touchend', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.SPACE = false;
         document.getElementById('attack-button').style.opacity = 0.5;
     });
 
-    document.getElementById('jump-button').addEventListener('touchstart', () => {
+    document.getElementById('jump-button').addEventListener('touchstart', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.UP = true;
         document.getElementById('jump-button').style.opacity = 1;
     });
-    document.getElementById('jump-button').addEventListener('touchend', () => {
+    document.getElementById('jump-button').addEventListener('touchend', (e) => {
+        if (e.cancelable) e.preventDefault();
         keyboard.UP = false;
         document.getElementById('jump-button').style.opacity = 0.5;
     });
 }
-
 
 window.addEventListener('unhandledrejection', event => {
     event.preventDefault();
