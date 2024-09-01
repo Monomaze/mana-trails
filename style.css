@@ -3,10 +3,6 @@
     src: url(font/monogram-extended.ttf);
 }
 
-/* @media screen and (orientation: landscape) {
-    
-} */
-
 @media (pointer:none), (pointer:coarse) {
     #mobile-keys {
         display: flex !important;
