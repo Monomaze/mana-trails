@@ -30,6 +30,7 @@ function startGame() {
     keyboard = new Keyboard();
     init();
     checkMutedGameState();
+    checkIfMobile();
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
     document.getElementById('unmuted-btn').classList.remove('d-none');
@@ -56,6 +57,7 @@ function restartGame() {
 
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('winning-screen').classList.add('d-none');
+    init();
     checkMutedGameState();
 }
 
@@ -148,7 +150,6 @@ function unpauseAudio() {
  * Checks muted state and mutes or unmutes game depending on it.
  */
 function checkMutedGameState() {
-    init();
     if (isMuted()) {
         muteGame();
     } else {
