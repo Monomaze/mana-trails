@@ -32,7 +32,7 @@
 
     <title>Mana Trails</title>
 </head>
-<body onload="">
+<body class="disable-touch-behaviour" onload="">
 
     <header>
         <img id="logo" src="img/manatrails_logo.svg" alt="">
@@ -142,12 +142,12 @@
 
                 <div class="row space-between d-none" id="mobile-buttons">
                     <div id="movement-buttons">
-                        <img id="left-button" src="img/UI/keys/mobile_left_key.png" alt="">
-                        <img id="right-button" src="img/UI/keys/mobile_right_key.png" alt="">
+                        <button id="left-button"><img class="disable-touch-behaviour"  src="img/UI/keys/mobile_left_key.png" alt=""></button>
+                        <button id="right-button"><img class="disable-touch-behaviour" src="img/UI/keys/mobile_right_key.png" alt=""></button>
                     </div>
                     <div id="action-buttons">
-                        <img id="attack-button" src="img/UI/keys/mobile_attack_key.png" alt="">
-                        <img id="jump-button" src="img/UI/keys/mobile_jump_key.png" alt="">
+                        <button id="attack-button"><img class="disable-touch-behaviour"  src="img/UI/keys/mobile_attack_key.png" alt=""></button>
+                        <button id="jump-button"><img class="disable-touch-behaviour"  src="img/UI/keys/mobile_jump_key.png" alt=""></button>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@
 
         </div>
 
-        <canvas class="d-none" id="canvas" width="720" height="480"></canvas>
+        <canvas class="d-none disable-touch-behaviour" id="canvas" width="720" height="480"></canvas>
     </section>
 
     <section id="rotate-phone">
