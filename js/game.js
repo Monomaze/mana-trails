@@ -11,7 +11,8 @@ let enemy_hit_sound = new Audio('audio/enemy_hit.wav');
 let walking_sound = new Audio('audio/footstep_grass.ogg');
 let hurt_sound = new Audio('audio/hurt.ogg');
 
-let maxHeight = window.matchMedia("(max-height: 480px)");
+let pointerCoarse = window.matchMedia("(pointer:coarse)");
+let pointerNone = window.matchMedia("(pointer:none)");
 
 
 /**
@@ -41,7 +42,7 @@ function startGame() {
  * and shows the mobile buttons afterwards.
  */
 function checkIfMobile() {
-    if (maxHeight.matches) {
+    if (pointerCoarse.matches || pointerNone.matches) {
         initMobileButtons();
         document.getElementById('mobile-buttons').classList.remove('d-none');
     }
