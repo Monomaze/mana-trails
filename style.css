@@ -336,16 +336,22 @@ canvas {
 
 .option-btns {
     position: absolute;
-    bottom: 16px;
-    right: 16px;
+    bottom: 8px;
+    right: 8px;
     z-index: 10;
 }
 
 .option-btn {
+    cursor: pointer;
+    border: none;
+    appearance: none;
+    background-color: inherit;
+}
+
+.option-btn img {
     height: 32px;
     width: 32px;
     image-rendering: pixelated;
-    cursor: pointer;
 }
 
 .option-btn:hover {
