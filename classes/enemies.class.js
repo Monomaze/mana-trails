@@ -27,17 +27,23 @@ class Enemies extends MovableObject {
         }, 1000 / 60);
         
         setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEATH);
-                if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
-                    this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
-                }
-            } else {
-                this.playAnimation(this.IMAGES_WALK);
-            }
+            this.handleAnimations();
         }, 150)
     }
 
+    /**
+     * Handles all the animation states.
+     */
+    handleAnimations() {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEATH);
+            if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
+                this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
+            }
+        } else {
+            this.playAnimation(this.IMAGES_WALK);
+        }
+    }
     /**
      * Reducing the health or setting it to 0 if health would be lower than 0.
      */

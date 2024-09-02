@@ -76,46 +76,94 @@ class Player extends MovableObject {
                 this.jump();
             }
 
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
-                this.moveRight();
-                this.otherDirection = false;
-                this.playWalkingSoundIfOnGround();
-            }
-
-            if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
-                this.moveLeft();
-                this.otherDirection = true;
-                this.playWalkingSoundIfOnGround();
-            }
-
+            this.handleMovementInputs();
             this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEATH);
-                if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
-                    this.width = 96 * this.sizeMultiplier;
-                    this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
-                    this.world.keyboard = false;
-                }
-            } else if (this.isHurt()) {
-                this.width = 80 * this.sizeMultiplier;
-                this.playAnimation(this.IMAGES_HURT);
-                hurt_sound.play();
-            } else if (this.isAboveGround()) {
-                this.width = 72 * this.sizeMultiplier;
-                this.playAnimation(this.IMAGES_JUMP);
-            } else {
-                if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    this.width = 80 * this.sizeMultiplier;
-                    this.playAnimation(this.IMAGES_WALK);
-                } else {
-                    this.width = 64 * this.sizeMultiplier;
-                    this.playAnimation(this.IMAGES_IDLE);
-                }
-            }
+            this.handleAnimations();
         }, 150);
+    }
+
+    /**
+     * Handles all the animation states.
+     */
+    handleAnimations() {
+        if (this.isDead()) {
+            this.playDeathAnimation();
+        } else if (this.isHurt()) {
+            this.playHurtAnimation();
+        } else if (this.isAboveGround()) {
+            this.playJumpAnimation();
+        } else {
+            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+                this.playWalkAnimation();
+            } else {
+                this.playIdleAnimation();
+            }
+        }
+    }
+
+    /**
+     * Plays the idle animation.
+     */
+    playIdleAnimation() {
+        this.width = 64 * this.sizeMultiplier;
+        this.playAnimation(this.IMAGES_IDLE);
+    }
+
+    /**
+     * Plays the walking animation.
+     */
+    playWalkAnimation() {
+        this.width = 80 * this.sizeMultiplier;
+        this.playAnimation(this.IMAGES_WALK);
+    }
+
+    /**
+     * Plays the death animation.
+     */
+    playDeathAnimation() {
+        this.playAnimation(this.IMAGES_DEATH);
+        if (this.lastImageOfAnimation(this.IMAGES_DEATH)) {
+            this.width = 96 * this.sizeMultiplier;
+            this.IMAGES_DEATH = [this.IMAGES_DEATH[this.IMAGES_DEATH.length - 1]];
+            this.world.keyboard = false;
+        }
+    }
+
+    /**
+     * Plays the getting hurt animation.
+     */
+    playHurtAnimation() {
+        this.width = 80 * this.sizeMultiplier;
+        this.playAnimation(this.IMAGES_HURT);
+        hurt_sound.play();
+    }
+
+    /**
+     * Plays the jumping animation.
+     */
+    playJumpAnimation() {
+        this.width = 72 * this.sizeMultiplier;
+        this.playAnimation(this.IMAGES_JUMP);
+    }
+
+    /**
+     * Handles the basic movement inputs from player (left / right).
+     */
+    handleMovementInputs() {
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.levelEndXRight) {
+            this.moveRight();
+            this.otherDirection = false;
+            this.playWalkingSoundIfOnGround();
+        }
+
+        if (this.world.keyboard.LEFT && this.x > this.world.level.levelEndXLeft) {
+            this.moveLeft();
+            this.otherDirection = true;
+            this.playWalkingSoundIfOnGround();
+        }
     }
 
     /**

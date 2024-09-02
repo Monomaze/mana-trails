@@ -34,7 +34,6 @@ function startGame() {
     checkIfMobile();
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('play-button').disabled = true;
-    document.getElementById('unmuted-btn').classList.remove('d-none');
 }
 
 /**
@@ -55,7 +54,6 @@ function restartGame() {
     world.deleteWorld();
     world.clearCanvas();
     clearAllIntervals();
-
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('winning-screen').classList.add('d-none');
     init();
@@ -67,14 +65,12 @@ function restartGame() {
  */
 function backToMenu() {
     restartGame();
-    init();
-    muteGame();
+    pauseAudio();
     hideOverlayButtons();
     clearAllIntervals();
     document.getElementById('play-button').disabled = false;
     document.getElementById('canvas').classList.add('d-none');
     document.getElementById('mobile-buttons').classList.add('d-none');
-    muted = false;
     keyboard = false;
 }
 
@@ -106,8 +102,10 @@ function isMuted() {
  * Shows the muted audio button, sets muted state to true and mutes all audio.
  */
 function muteGame() {
-    document.getElementById('unmuted-btn').classList.add('d-none');
-    document.getElementById('muted-btn').classList.remove('d-none');
+    if (document.getElementById('muted-btn').classList.contains('d-none')) {
+        document.getElementById('unmuted-btn').classList.add('d-none');
+        document.getElementById('muted-btn').classList.remove('d-none');
+    }
     muted = true;
     pauseAudio();
 }
@@ -116,12 +114,13 @@ function muteGame() {
  * Shows the unmuted audio button, sets muted state to false and unmutes all audio.
  */
 function unmuteGame() {
-    document.getElementById('muted-btn').classList.add('d-none');
-    document.getElementById('unmuted-btn').classList.remove('d-none');
+    if (document.getElementById('unmuted-btn').classList.contains('d-none')) {
+        document.getElementById('muted-btn').classList.add('d-none');
+        document.getElementById('unmuted-btn').classList.remove('d-none');
+    }
     unpauseAudio();
     muted = false;
 }
-
 
 /**
  * Pauses audio or sets the volume to 0.
@@ -204,14 +203,16 @@ window.addEventListener("keyup", (event) => {
  * Initialises the mobile button event listeners.
  */
 function initMobileButtons() {
-    addEventListenersForMovementButtons();
-    addEventListenersForActionButtons();
+    addEventListenersForMovementButtonLeft();
+    addEventListenersForMovementButtonRight();
+    addEventListenersForActionButtonAttack();
+    addEventListenersForActionButtonJump();
 }
 
 /**
- * Adds event listeners for movement mobile buttons.
+ * Adds event listeners for movement mobile button LEFT.
  */
-function addEventListenersForMovementButtons() {
+function addEventListenersForMovementButtonLeft() {
     document.getElementById('left-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
         keyboard.LEFT = true;
@@ -222,7 +223,12 @@ function addEventListenersForMovementButtons() {
         keyboard.LEFT = false;
         document.getElementById('left-button').style.opacity = 0.5;
     });
+}
 
+/**
+ * Adds event listeners for movement mobile button RIGHT.
+ */
+function addEventListenersForMovementButtonRight() {
     document.getElementById('right-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
         keyboard.RIGHT = true;
@@ -236,9 +242,9 @@ function addEventListenersForMovementButtons() {
 }
 
 /**
- * Adds event listeners for action mobile buttons.
+ * Adds event listeners for action mobile button ATTACK.
  */
-function addEventListenersForActionButtons() {
+function addEventListenersForActionButtonAttack() {
     document.getElementById('attack-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
         keyboard.SPACE = true;
@@ -249,7 +255,12 @@ function addEventListenersForActionButtons() {
         keyboard.SPACE = false;
         document.getElementById('attack-button').style.opacity = 0.5;
     });
+}
 
+/**
+ * Adds event listeners for action mobile button JUMP.
+ */
+function addEventListenersForActionButtonJump() {
     document.getElementById('jump-button').addEventListener('touchstart', (e) => {
         if (e.cancelable) e.preventDefault();
         keyboard.UP = true;

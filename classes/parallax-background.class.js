@@ -28,24 +28,36 @@ class ParallaxBackground extends MovableObject {
             if (world !== undefined) {
                 if ((this.world.keyboard.RIGHT != this.world.keyboard.LEFT)) {
                     if (this.world.keyboard.RIGHT && this.world.player.x < this.world.level.levelEndXRight && !this.world.player.isDead()) {
-                        if (this.direction === 'right') {
-                            this.moveRight();
-                        } else if (this.direction === 'left') {
-                            this.moveLeft();
-                        }
-                        this.otherDirection = false;
+                        this.handleMovementDirection('normal');
                     }
     
                     if (this.world.keyboard.LEFT && this.world.player.x > this.world.level.levelEndXLeft && !this.world.player.isDead()) {
-                        if (this.direction === 'right') {
-                            this.moveLeft();
-                        } else if (this.direcition === 'left') {
-                            this.moveRight();
-                        }
-                        this.otherDirection = true;
+                        this.handleMovementDirection('mirrored');
                     }
                 }
             }
         }, 1000 / 60);
+    }
+
+    /**
+     * Handles the background movement directions.
+     * @param {string} state - indicates the direction in which the background is moving
+     */
+    handleMovementDirection(state) {
+        if (state == 'normal') {
+            if (this.direction === 'right') {
+                this.moveRight();
+            } else if (this.direction === 'left') {
+                this.moveLeft();
+            }
+            this.otherDirection = false;
+        } else if (state == 'mirrored') {
+            if (this.direction === 'right') {
+                this.moveLeft();
+            } else if (this.direcition === 'left') {
+                this.moveRight();
+            }
+            this.otherDirection = true;
+        }
     }
 }

@@ -116,6 +116,8 @@ class World {
      */
     deleteWorld() {
         pauseAudio();
+        enemyArray = [];
+        pBgArray = [];
         this.level = [];
         this.bossHealthBar = [];
         this.healthBar = [];
@@ -190,60 +192,90 @@ class World {
     }
  
     /**
-     * Checks if player collides with enemy, reduces players health, sets invulnerablity cooldown timer and sets new healthbar percantage.
-     * Checks if ShootableObject collides with enemy, plays hit sound, reduces enemys health and sets new boss healthbar percantage.
-     * Deletes Shootable object after hitting an enemy.
+     * Handles the collisions per enemy.
      */
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.player.isColliding(enemy)) {
-                if (!enemy.isDead() && this.invulnerabilityCooldown == false) {
-                    this.player.hit(enemy.collisionDamage);
-                    this.invulnerabilityCooldown = true;
-                    this.setInvulnerabilityCooldown();
-                    this.healthBar.setPercentage(this.player.health);
-                }
-            };
-            
-            this.shootableObjects.forEach((projectile) => {
-                if (enemy.isColliding(projectile) && !enemy.isDead()) {
-                    enemy_hit_sound.play();
-                    enemy.takeDamage();
-                    if (enemy instanceof Boss) {
-                        this.bossHealthBar.setPercentage(enemy.health);
-                    }
-                    this.killObjectFromArray(this.shootableObjects, projectile);
-                }
-            });
+            this.checkEnemyCollision(enemy);
+            this.checkShootableObjectCollision(enemy);
         });
     }
 
     /**
+     * Checks if ShootableObject collides with enemy, plays hit sound, reduces enemys health and sets new boss healthbar percantage.
+     * Deletes Shootable object after hitting an enemy.
+     * @param {object} enemy - enemy to check the collision with
+     */
+    checkShootableObjectCollision(enemy) {
+        this.shootableObjects.forEach((projectile) => {
+            if (enemy.isColliding(projectile) && !enemy.isDead()) {
+                enemy_hit_sound.play();
+                enemy.takeDamage();
+                if (enemy instanceof Boss) {
+                    this.bossHealthBar.setPercentage(enemy.health);
+                }
+                this.killObjectFromArray(this.shootableObjects, projectile);
+            }
+        });
+    }
+
+    /**
+     * Checks if player collides with enemy, reduces players health, sets invulnerablity cooldown timer and sets new healthbar percantage.
+     * @param {object} enemy - enemy to check the collision with
+     */
+    checkEnemyCollision(enemy) {
+        if (this.player.isColliding(enemy)) {
+            if (!enemy.isDead() && this.invulnerabilityCooldown == false) {
+                this.player.hit(enemy.collisionDamage);
+                this.invulnerabilityCooldown = true;
+                this.setInvulnerabilityCooldown();
+                this.healthBar.setPercentage(this.player.health);
+            }
+        }
+    }
+
+    /**
      * Checks if player is colliding with an collectable item.
-     * When the item is a ManaPot, player gains health and the ManaBar gets updated.
-     * When the item is a scroll, the CollectableBar gets updated. When the bar is full, the boss spawns.
-     * Deletes CollectableObject after collision.
      */
     checkCollectableCollision() {
         this.level.items.forEach(item => {
            if(this.player.isColliding(item)) {
                 if (item instanceof ManaPot && this.player.mana < 100) {
-                    this.player.gainMana();
-                    this.manaBar.setPercentage(this.player.mana);
-                    this.killObjectFromArray(this.level.items, item);
-                    pickup_sound.play();
+                    this.handleManaPotCollision(item);
                 } else if (item instanceof Scroll) {
-                    this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
-                    this.killObjectFromArray(this.level.items, item);
-                    pickup_sound.play();
-                    if (this.collectableBar.percentage == 30 && this.bossSpawned == false) {
-                        this.spawnBoss();
-                    }
+                    this.handleScrollCollision(item);
                 }
            } 
         });
     }
 
+    /**
+     * Handles the collision with the ManaPot object.
+     * When the item is a ManaPot, player gains health and the ManaBar gets updated.
+     * Deletes CollectableObject after collision.
+     * @param {object} item - item to check the collision with
+     */
+    handleManaPotCollision(item) {
+        this.player.gainMana();
+        this.manaBar.setPercentage(this.player.mana);
+        this.killObjectFromArray(this.level.items, item);
+        pickup_sound.play();
+    }
+
+    /**
+     * Handles the collision with the Scroll object.
+     * When the item is a scroll, the CollectableBar gets updated. When the bar is full, the boss spawns.
+     * Deletes CollectableObject after collision.
+     * @param {object} item - item to check the collision with
+     */
+    handleScrollCollision(item) {
+        this.collectableBar.setPercentage(this.collectableBar.percentage + 10);
+        this.killObjectFromArray(this.level.items, item);
+        pickup_sound.play();
+        if (this.collectableBar.percentage == 30 && this.bossSpawned == false) {
+            this.spawnBoss();
+        }
+    }
     /**
      * Initialises the Boss object and the BossHealthBar.
      */
@@ -263,9 +295,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addBackgrounds();
         this.ctx.translate(-this.camera_x, 0);
-        /* ====== Space for fixed objects ====== */
         this.addUIElements();
-        /* ===================================== */
         this.ctx.translate(this.camera_x, 0);
         this.addMovableObjects();
         this.addObjectsToMap(this.level.items);
@@ -317,13 +347,11 @@ class World {
                 this.flipImage(moveableObject);
             }
             moveableObject.draw(this.ctx);
-            // moveableObject.drawRect(this.ctx, 'blue');
             if (moveableObject.otherDirection) {
                 this.flipImageBack(moveableObject);
             }
         } else {
             moveableObject.draw(this.ctx);
-            // moveableObject.drawRect(this.ctx, 'red');
         }
     }
 
